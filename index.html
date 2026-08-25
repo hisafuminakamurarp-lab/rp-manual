@@ -536,10 +536,8 @@ const TOOL_URLS = Object.freeze({
   "Claude": "https://claude.ai/",
   "Gemini": "https://gemini.google.com/",
   "Zoom": "https://zoom.us/signin",
-  "GitHub Desktop": "https://desktop.github.com/",
   "GitHub": "https://github.com/",
   "Vercel": "https://vercel.com/dashboard",
-  "VS Code": "https://code.visualstudio.com/",
   "Google Analytics": "https://analytics.google.com/",
   "Search Console": "https://search.google.com/search-console",
   "スプレッドシート": "https://docs.google.com/spreadsheets/"
@@ -666,111 +664,6 @@ const data = [
               {
                 title: "業務連携の流れ",
                 body: "営業が案件と人材を獲得・マッチング → 総務が契約・稼働開始・請求 → 経理が入金処理・会計 → 法務が契約リスクを継続監視。人事と共通基盤は全フェーズを横断的に支えます。"
-              }
-            ]
-          }
-        ],
-        crossLinks: [
-          { phase: "overview", phaseTitle: "0. 概要", category: "manual-update", categoryTitle: "マニュアルの更新方法", note: "本マニュアル自体の編集・公開手順(GitHub Desktop)" }
-        ]
-      },
-      {
-        id: "manual-update",
-        title: "マニュアルの更新方法",
-        desc: "GitHub Desktopでの編集・公開手順",
-        sections: [
-          {
-            title: "更新のしくみ(全体像)",
-            subsections: [
-              {
-                title: "概要",
-                body: '本マニュアルは1つのファイル(<strong>index.html</strong>)で構成され、GitHubリポジトリ <strong>hisafuminakamurarp-lab/rp-manual</strong> で管理しています。GitHubの<strong>main</strong>ブランチに変更を反映(Push)すると、Vercelが自動でデプロイし、数十秒〜数分で本番サイト(<a href="https://rp-manual.vercel.app" target="_blank" rel="noopener" style="color:var(--rp-info);">rp-manual.vercel.app</a>)に公開されます。'
-              },
-              {
-                title: "更新の流れ",
-                list: [
-                  "<strong>① 最新を取得</strong> ─ GitHub Desktopで Fetch origin / Pull",
-                  "<strong>② 編集</strong> ─ パソコン上の index.html をエディタで修正",
-                  "<strong>③ 表示確認</strong> ─ index.html をブラウザで開いて確認",
-                  "<strong>④ 記録・送信</strong> ─ GitHub Desktopで Commit → Push",
-                  "<strong>⑤ 自動公開</strong> ─ Vercelが自動デプロイし本番サイトに反映"
-                ]
-              },
-              {
-                title: "使用ツール",
-                body: '<span class="tool-tag">GitHub Desktop</span><span class="tool-tag">GitHub</span><span class="tool-tag">Vercel</span><span class="tool-tag">VS Code</span>'
-              }
-            ]
-          },
-          {
-            title: "初回セットアップ(最初の1回だけ)",
-            subsections: [
-              {
-                title: "1. GitHub Desktopのインストール",
-                body: '公式サイト(<a href="https://desktop.github.com/" target="_blank" rel="noopener" style="color:var(--rp-info);">desktop.github.com</a>)からダウンロードしてインストールします(Windows / Mac対応・無料)。'
-              },
-              {
-                title: "2. GitHubアカウントでサインイン",
-                body: "起動後の画面で [Sign in to GitHub.com] を選び、マニュアル管理用のGitHubアカウントでサインインします。あとからサインインする場合は File > Options > Accounts(Macは GitHub Desktop > Settings > Accounts)から行えます。"
-              },
-              {
-                title: "3. リポジトリをクローン(パソコンに複製)",
-                body: "File > Clone repository を開き、[GitHub.com] タブから <strong>hisafuminakamurarp-lab/rp-manual</strong> を選択します。Local path(保存先フォルダ)を確認して [Clone] を押すと、マニュアル一式がパソコンに複製されます。"
-              },
-              {
-                title: "4. エディタの準備",
-                body: '編集には <a href="https://code.visualstudio.com/" target="_blank" rel="noopener" style="color:var(--rp-info);">Visual Studio Code</a>(無料)を推奨します。インストールしておくと、GitHub Desktopの Repository > Open in Visual Studio Code からワンクリックで開けます(メモ帳等でも編集自体は可能です)。'
-              }
-            ]
-          },
-          {
-            title: "更新手順(毎回の作業)",
-            subsections: [
-              {
-                title: "STEP 1:最新の状態に更新",
-                body: "GitHub Desktopを起動し、Current Repositoryが <strong>rp-manual</strong> になっていることを確認 → 上部の [Fetch origin] をクリックします。[Pull origin] と表示されたら押して、必ず最新の状態にしてから編集を始めます(別の場所で行った更新との衝突防止)。"
-              },
-              {
-                title: "STEP 2:index.htmlを編集",
-                body: "Repository > Open in Visual Studio Code でエディタを開き、index.html を修正します。ページの文章は <strong>const data = [ ... ]</strong> の中に日本語で書かれているので、該当箇所を書き換えて保存します。"
-              },
-              {
-                title: "STEP 3:表示を確認",
-                body: "保存後、クローンしたフォルダ内の index.html をダブルクリックしてブラウザで開き、ログインして表示崩れがないか確認します(この時点ではまだ本番サイトには反映されていません)。"
-              },
-              {
-                title: "STEP 4:コミット(変更を記録)",
-                body: "GitHub Desktopに戻ると、左に変更したファイル、右に変更内容(差分)が表示されます。左下の Summary に変更内容を短く入力(例:「会社OS全体像を更新」)し、[Commit to main] をクリックします。"
-              },
-              {
-                title: "STEP 5:プッシュ(GitHubへ送信)",
-                body: "上部の [Push origin] をクリックすると、変更がGitHubに送信され、Vercelが自動でデプロイを開始します。"
-              },
-              {
-                title: "STEP 6:本番サイトで確認",
-                body: '数十秒〜数分後に <a href="https://rp-manual.vercel.app" target="_blank" rel="noopener" style="color:var(--rp-info);">rp-manual.vercel.app</a> を開き、更新が反映されているか確認します。反映されて見えない場合はスーパーリロード(Windows: Ctrl+Shift+R / Mac: Cmd+Shift+R)を試してください。'
-              }
-            ]
-          },
-          {
-            title: "運用ルール・注意事項",
-            subsections: [
-              {
-                title: "運用ルール",
-                list: [
-                  "編集前に必ず [Fetch origin] → [Pull] で最新化する(競合防止)",
-                  "コミットのSummaryには「何を変更したか」を短く書く(変更履歴として機能)",
-                  "内容の異なる変更は1回にまとめず、変更ごとにコミットを分ける",
-                  "メンバー情報(ログインID・パスワード設定)の箇所は誤って変更・削除しない"
-                ]
-              },
-              {
-                title: "元に戻したいとき",
-                body: "GitHubにはコミット単位で全履歴が残っています。GitHub Desktopの History タブで過去の変更を確認でき、間違えた場合は該当コミットを右クリック → [Revert Changes in Commit] で打ち消せます。対処に迷う場合は管理者に相談してください。"
-              },
-              {
-                title: "補足:GitHub Desktopが使えない環境での修正",
-                body: "外出先などでは、GitHub.comの <strong>rp-manual</strong> リポジトリで index.html を開き、鉛筆アイコン(Edit)からブラウザ上で直接編集することもできます。編集後に画面右上の [Commit changes...] を押せば、同じくVercelが自動で公開します。"
               }
             ]
           }
@@ -1711,6 +1604,10 @@ function routeFromHash() {
     const phase = data.find(d => d.id === parts[0]);
     if (phase) { showPhase(parts[0]); return true; }
   } else if (parts.length >= 2) {
+    if (parts[0] === "overview" && parts[1] === "manual-update") {
+      showPhase("overview");
+      return true;
+    }
     if (parts[0] === "phase-sales") {
       const legacySalesRoutes = {
         customer: { phase: "phase-sales", category: "project" },
