@@ -625,7 +625,7 @@ const data = [
                 title: "構造の考え方",
                 body: "本マニュアルは以下の階層構造で設計されています:",
                 list: [
-                  "<strong>フェーズ(部門)</strong> ─ 営業/事務/経理/人事/法務/共通基盤",
+                  "<strong>フェーズ(部門)</strong> ─ 営業/総務/経理/人事/法務/共通基盤",
                   "<strong>業務カテゴリ</strong> ─ 各フェーズに紐づく業務単位",
                   "<strong>運用フロー</strong> ─ 実際の進め方・ステップ",
                   "<strong>使用ツール・ルール</strong> ─ 利用ツール・運用ルール・自動化"
@@ -656,7 +656,7 @@ const data = [
                 body: "ROCK PTARMIGANの業務は以下6フェーズで構成されます。各フェーズは独立した責任範囲を持ちながら、相互に連携します。",
                 list: [
                   "<strong>1. 営業フェーズ</strong> ─ 案件と人材をつなぐ(toB案件獲得・toC人材獲得)",
-                  "<strong>2. 事務フェーズ</strong> ─ 業務を回す(契約・請求・アカウント)",
+                  "<strong>2. 総務フェーズ</strong> ─ 業務を回す(契約・請求・アカウント)",
                   "<strong>3. 経理フェーズ</strong> ─ 数字を管理する(会計・決算・予実)",
                   "<strong>4. 人事フェーズ</strong> ─ 人を支える(採用・労務・給与)",
                   "<strong>5. 法務フェーズ</strong> ─ リスクを守る(契約審査・コンプラ)",
@@ -665,7 +665,7 @@ const data = [
               },
               {
                 title: "業務連携の流れ",
-                body: "営業が案件と人材を獲得・マッチング → 事務が契約・稼働開始・請求 → 経理が入金処理・会計 → 法務が契約リスクを継続監視。人事と共通基盤は全フェーズを横断的に支えます。"
+                body: "営業が案件と人材を獲得・マッチング → 総務が契約・稼働開始・請求 → 経理が入金処理・会計 → 法務が契約リスクを継続監視。人事と共通基盤は全フェーズを横断的に支えます。"
               }
             ]
           }
@@ -783,7 +783,7 @@ const data = [
     id: "phase-sales",
     title: "1. 営業フェーズ",
     description: "案件と人材を確保し、両者のマッチングから稼働決定までを担うフェーズ",
-    responsibility: "案件・募集枠の獲得と管理、見込みメンバーの獲得と管理、案件提案、条件調整、本人・取引先の意思確認、稼働決定までを担当。契約・入場準備は事務フェーズへ引き継ぐ。",
+    responsibility: "案件・募集枠の獲得と管理、見込みメンバーの獲得と管理、案件提案、条件調整、本人・取引先の意思確認、稼働決定までを担当。契約・入場準備は総務フェーズへ引き継ぐ。",
     categories: [
       {
         id: "project",
@@ -826,7 +826,7 @@ const data = [
           ]
         }],
         crossLinks: [
-          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "web", categoryTitle: "Web管理", note: "採用情報・紹介導線の整備と連動" }
+          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "web", categoryTitle: "Web管理", note: "採用情報・紹介導線の整備と連動" }
         ]
       },
       {
@@ -836,18 +836,18 @@ const data = [
         sections: [{
           title: "マッチング・稼働決定の概要",
           subsections: [
-            { title: "概要", body: "確保した案件と見込みメンバーを照合し、本人・取引先への提案、条件調整、双方の意思確認を進めます。誰がどの案件で稼働するかを決定した時点で営業フェーズは完了し、契約・入場準備を事務フェーズへ引き継ぎます。" },
+            { title: "概要", body: "確保した案件と見込みメンバーを照合し、本人・取引先への提案、条件調整、双方の意思確認を進めます。誰がどの案件で稼働するかを決定した時点で営業フェーズは完了し、契約・入場準備を総務フェーズへ引き継ぎます。" },
             { title: "使用ツール", body: '<span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' },
             { title: "案件を選定するとき", list: ["案件の勤務地・単価・勤務条件・開始時期を確認する", "見込みメンバーの希望条件・経験・稼働可能時期と照合する", "募集枠と必要スキルに適合する候補者を選定する"] },
             { title: "候補者へ案件を提案するとき", list: ["本人へ案件内容・勤務地・単価・勤務条件を説明する", "本人の反応・懸念点・希望条件を記録する", "必要に応じて取引先・現場へ候補者情報を共有する"] },
             { title: "条件を調整するとき", list: ["給与・単価・勤務日数・シフト・開始日を調整する", "本人と取引先の認識に相違がないか確認する", "調整経緯をSlackで社内共有する"] },
-            { title: "稼働を決定するとき", list: ["本人の稼働意思と取引先の受け入れ意思を確認する", "誰が・どの案件で・いつから稼働するかを確定する", "案件化・稼働決定の状況をSlackで社内共有する", "契約締結・必要書類・クルーコード・入場準備を事務フェーズへ引き継ぐ"] },
-            { title: "営業フェーズの終了条件", body: "案件と人材のマッチングが成立し、本人・取引先の双方が合意して稼働が決定していること。契約締結、必要書類、クルーコード取得、入場準備、稼働開始は事務フェーズが担当します。" }
+            { title: "稼働を決定するとき", list: ["本人の稼働意思と取引先の受け入れ意思を確認する", "誰が・どの案件で・いつから稼働するかを確定する", "案件化・稼働決定の状況をSlackで社内共有する", "契約締結・必要書類・クルーコード・入場準備を総務フェーズへ引き継ぐ"] },
+            { title: "営業フェーズの終了条件", body: "案件と人材のマッチングが成立し、本人・取引先の双方が合意して稼働が決定していること。契約締結、必要書類、クルーコード取得、入場準備、稼働開始は総務フェーズが担当します。" }
           ]
         }],
         crossLinks: [
-          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "contract", categoryTitle: "契約管理", note: "稼働決定後の契約締結" },
-          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "onboarding", categoryTitle: "稼働・入場準備", note: "必要書類・クルーコード・入場準備を引き継ぐ" }
+          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "contract", categoryTitle: "契約管理", note: "稼働決定後の契約締結" },
+          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "onboarding", categoryTitle: "稼働・入場準備", note: "必要書類・クルーコード・入場準備を引き継ぐ" }
         ]
       }
     ]
@@ -855,7 +855,7 @@ const data = [
 
   {
     id: "phase-office",
-    title: "2. 事務フェーズ",
+    title: "2. 総務フェーズ",
     description: "契約・稼働準備・請求・アカウント・発注など業務運用の中核フェーズ",
     responsibility: "営業から稼働決定案件を引き継ぎ、契約締結、必要書類、クルーコード取得、入場・稼働開始準備、請求発行、アカウント・デバイス管理、Web運用を担当。",
     categories: [
@@ -1032,7 +1032,7 @@ const data = [
           { title: "管理項目", list: ["売掛金台帳", "入金予定リスト(月次)", "入金消込", "長期未回収のフォロー"] }
         ]}],
         crossLinks: [
-          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "billing", categoryTitle: "請求発注", note: "請求書発行から債権管理へ連携" }
+          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "billing", categoryTitle: "請求発注", note: "請求書発行から債権管理へ連携" }
         ]
       },
       {
@@ -1095,19 +1095,19 @@ const data = [
           { title: "使用ツール", body: '<span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span><span class="tool-tag">freeeサイン</span>' }
         ]}],
         crossLinks: [
-          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "account", categoryTitle: "アカウント管理", note: "入社時のアカウント発行依頼" }
+          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "account", categoryTitle: "アカウント管理", note: "入社時のアカウント発行依頼" }
         ]
       },
       {
         id: "onboard", title: "入退職管理", desc: "入社・退職フローの統一管理",
         sections: [{ title: "入退職管理の概要", subsections: [
           { title: "概要", body: "入社・退職時の手続きを統一フローで管理。SmartHRで電子契約・社保手続きを集約。" },
-          { title: "入社時フロー", list: ["雇用契約締結(SmartHR / freeeサイン)", "社会保険加入手続き", "アカウント・デバイス発行依頼(事務フェーズ)", "オリエンテーション実施"] },
+          { title: "入社時フロー", list: ["雇用契約締結(SmartHR / freeeサイン)", "社会保険加入手続き", "アカウント・デバイス発行依頼(総務フェーズ)", "オリエンテーション実施"] },
           { title: "退職時フロー", list: ["退職届受領", "業務引継ぎ確認", "アカウント停止依頼(退職日)", "デバイス返却", "離職票・源泉徴収票発行"] }
         ]}],
         crossLinks: [
-          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "account", categoryTitle: "アカウント管理", note: "発行・停止連携" },
-          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "device", categoryTitle: "デバイス管理", note: "貸与・返却連携" }
+          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "account", categoryTitle: "アカウント管理", note: "発行・停止連携" },
+          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "device", categoryTitle: "デバイス管理", note: "貸与・返却連携" }
         ]
       },
       {
@@ -1165,8 +1165,8 @@ const data = [
           { title: "チェック項目", list: ["契約条項の妥当性", "リスク条項の有無", "個人情報保護法対応", "知的財産権の取り扱い", "解約条項・損害賠償条項"] }
         ]}],
         crossLinks: [
-          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "onboarding", categoryTitle: "稼働・入場準備", note: "契約・稼働開始前の条件審査" },
-          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "contract", categoryTitle: "契約管理", note: "契約締結前審査" }
+          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "onboarding", categoryTitle: "稼働・入場準備", note: "契約・稼働開始前の条件審査" },
+          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "contract", categoryTitle: "契約管理", note: "契約締結前審査" }
         ]
       },
       {
@@ -1183,7 +1183,7 @@ const data = [
           { title: "監視項目", list: ["契約違反の早期検知", "更新時の条件見直し", "紛争予防対応", "契約終了時の手続き"] }
         ]}],
         crossLinks: [
-          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "contract", categoryTitle: "契約管理", note: "契約台帳の継続監視" }
+          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "contract", categoryTitle: "契約管理", note: "契約台帳の継続監視" }
         ]
       },
       {
