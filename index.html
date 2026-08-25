@@ -730,7 +730,7 @@ const data = [
     id: "phase-sales",
     title: "1. 営業フェーズ",
     description: "案件と人材の両面から、通信人材事業の稼働機会を創出するフェーズ",
-    responsibility: "取引先・現場との関係構築、案件・募集枠の獲得と管理、見込みメンバーの獲得と管理、案件提案・マッチング、条件調整、契約・稼働前準備を担当。",
+    responsibility: "取引先・現場との関係構築、案件・募集枠の獲得と管理、見込みメンバーの獲得と管理、条件調整、契約・稼働前準備を担当。",
     categories: [
       {
         id: "customer",
@@ -770,20 +770,6 @@ const data = [
         crossLinks: [
           { phase: "phase-office", phaseTitle: "事務フェーズ", category: "web", categoryTitle: "Web管理", note: "採用情報・紹介導線の整備と連動" }
         ]
-      },
-      {
-        id: "deal",
-        title: "マッチング・提案",
-        desc: "案件選定・候補者提案・条件調整・意思確認",
-        sections: [{
-          title: "マッチング・提案の概要",
-          subsections: [
-            { title: "概要", body: "取引先・現場から獲得した案件と見込みメンバーの希望条件を照合し、SB・ドコモ等の通信案件への提案、条件調整、本人と取引先の意思確認を進めます。案件と人材の双方にとって適切な配属を決定します。" },
-            { title: "マッチングの判断項目", list: ["案件種別・キャリア・業務内容", "勤務地・通勤範囲・勤務形態", "単価・給与・シフト", "必要スキル・通信業界での経験", "稼働開始時期・本人の希望条件", "現場との相性・キャリア意向"] },
-            { title: "提案・調整の管理項目", list: ["提案先の案件・取引先・現場", "提案する見込みメンバー", "提案日・提案内容・本人と取引先の反応", "検討ステータス(検討中/前向き/辞退/決定)", "条件調整(給与/シフト/開始日)", "本人と取引先の最終意思確認"] },
-            { title: "進捗ステージ", list: ["案件選定 → 候補者提案 → 条件調整 → 双方の意思確認 → 配属決定 → 契約・稼働準備"] }
-          ]
-        }]
       },
       {
         id: "order-check",
@@ -1678,6 +1664,10 @@ function routeFromHash() {
     const phase = data.find(d => d.id === parts[0]);
     if (phase) { showPhase(parts[0]); return true; }
   } else if (parts.length >= 2) {
+    if (parts[0] === "phase-sales" && parts[1] === "deal") {
+      showPhase(parts[0]);
+      return true;
+    }
     const legacySalesCategories = { lead: "marketing", activity: "marketing" };
     const categoryId = parts[0] === "phase-sales"
       ? (legacySalesCategories[parts[1]] || parts[1])
