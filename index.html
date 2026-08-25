@@ -660,7 +660,7 @@ const data = [
                   "<strong>3. 経理フェーズ</strong> ─ 数字を管理する(会計・決算・予実)",
                   "<strong>4. 人事フェーズ</strong> ─ 人を支える(採用・労務・給与)",
                   "<strong>5. 法務フェーズ</strong> ─ リスクを守る(契約審査・コンプラ)",
-                  "<strong>6. 共通基盤</strong> ─ 全社を支える(ツール・AI・MTG・セキュリティ)"
+                  "<strong>6. 共通基盤</strong> ─ 全社で使用するツールを整理する"
                 ]
               },
               {
@@ -1199,48 +1199,15 @@ const data = [
   {
     id: "phase-common",
     title: "6. 共通基盤",
-    description: "全フェーズを横断的に支える基盤フェーズ",
-    responsibility: "全社共通基盤の整備。ツール・AI・MTG・セキュリティ・ロードマップを管理し、全フェーズを支える。",
+    description: "全フェーズで利用する共通ツールを整理するフェーズ",
+    responsibility: "社内外のコミュニケーション、業務管理、AI活用に使用するツールを一覧で管理する。",
     categories: [
       {
         id: "tools", title: "使用ツール一覧", desc: "全社共通ツール構成",
         sections: [{ title: "ツール構成", subsections: [
           { title: "コミュニケーション", body: "社内連絡・情報共有にはSlack、取引先・見込みメンバーなど社外との連絡にはグループLINEを使用します。", list: ["Slack(社内連絡・情報共有・進捗報告)", "グループLINE(社外連絡・取引先・メンバーとの連携)"] },
           { title: "業務管理", list: ["freee会計(経理・請求)", "freeeサイン(電子契約)", "SmartHR(労務・人事)", "Notta(議事録自動化)"] },
-          { title: "AI・自動化", list: ["ChatGPT", "Claude", "Gemini"] },
-          { title: "セキュリティ", list: ["ID・PASS管理", "デバイス管理", "アクセス権限管理", "VPN管理"] }
-        ]}]
-      },
-      {
-        id: "ai-rule", title: "AI活用ルール", desc: "AI利用ガイドライン",
-        sections: [{ title: "AI利用ガイドライン", subsections: [
-          { title: "概要", body: "AIを活用し、業務効率化・マニュアル作成・分析支援を行います。機密情報の入力には注意し、セキュリティポリシーに従います。" },
-          { title: "利用用途", list: ["議事録整理(Notta連携)", "マニュアル作成・更新", "文章作成(メール・提案書下書き)", "データ分析(集計・可視化)", "業務フロー整理", "LP制作補助"] },
-          { title: "使用AI", body: '<span class="tool-tag">ChatGPT</span><span class="tool-tag">Claude</span><span class="tool-tag">Gemini</span>' },
-          { title: "注意事項", body: "個人情報・顧客情報・契約情報など機密データはAIへの入力を原則禁止。社外秘情報の入力時は事前に管理者に確認すること。" }
-        ]}]
-      },
-      {
-        id: "meeting", title: "定例MTG運用", desc: "MTG運用ルール",
-        sections: [{ title: "MTG運用ルール", subsections: [
-          { title: "概要", body: "定例MTGを通じて、進捗確認・課題共有・PDCA管理を行います。議事録は自動化し、タスク化までを定型フローで管理。" },
-          { title: "運用ルール", list: ["毎週定例MTG実施(曜日固定)", "Nottaで議事録自動作成", "SlackでToDo共有(担当・期限明記)", "Slackで進捗報告", "次回MTGで振り返り(PDCA)"] }
-        ]}]
-      },
-      {
-        id: "security", title: "セキュリティポリシー", desc: "全社セキュリティ運用",
-        sections: [{ title: "セキュリティ運用", subsections: [
-          { title: "基本方針", list: ["アカウント共有禁止", "パスワード使い回し禁止", "個人端末利用時は事前申請", "顧客情報の外部共有禁止", "不正アクセス時は即時報告"] },
-          { title: "管理内容", list: ["権限管理(ロールベース)", "ログ管理(アクセスログ保存)", "デバイス管理(貸与端末の追跡)", "アクセス管理(VPN必須化)"] },
-          { title: "インシデント対応", body: "不正アクセス・情報漏洩の疑いがある場合、発見者は直ちに管理者へ報告。管理者は対象アカウントの停止・パスワード変更・影響範囲調査を実施。" }
-        ]}]
-      },
-      {
-        id: "roadmap", title: "今後の拡張予定", desc: "自動化・AI連携ロードマップ",
-        sections: [{ title: "ロードマップ", subsections: [
-          { title: "自動化予定", list: ["Slack通知自動化", "案件・人材情報の進捗共有", "勤怠自動集計", "契約締結後の請求自動発行"] },
-          { title: "AI連携", list: ["AI議事録整理", "AI営業分析", "AIマニュアル更新", "AIチャットサポート"] },
-          { title: "更新情報", body: "作成会社:株式会社ROCK PTARMIGAN<br>初版作成:2026年5月<br>運用管理:管理者" }
+          { title: "AI・自動化", list: ["ChatGPT", "Claude", "Gemini"] }
         ]}]
       }
     ]
@@ -1758,6 +1725,10 @@ function routeFromHash() {
         showCategory(legacyRoute.phase, legacyRoute.category);
         return true;
       }
+    }
+    if (parts[0] === "phase-common" && ["ai-rule", "meeting", "security", "roadmap"].includes(parts[1])) {
+      showCategory("phase-common", "tools");
+      return true;
     }
     showCategory(parts[0], parts[1]);
     return true;
