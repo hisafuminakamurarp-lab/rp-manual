@@ -744,7 +744,7 @@ const data = [
             { title: "案件の管理項目", list: ["取引先・現場・担当者", "案件種別・キャリア(SB/ドコモ等)", "勤務地・稼働開始時期", "募集人数・充足状況", "単価・勤務条件・必要スキル", "提案状況・配属予定メンバー", "更新時期・増枠余地・終了予定"] },
             { title: "案件のライフサイクル", list: ["発掘 → 案件獲得 → 条件確認 → 募集・提案 → 配属 → 更新・増枠 → 終了"] },
             { title: "活動・進捗管理", list: ["現場訪問・商談・連絡内容を当日中に記録", "次回アクション・対応期限・担当者を明確化", "取引先・案件ごとに対応履歴を共有"] },
-            { title: "使用ツール", body: '<span class="tool-tag">kintone</span><span class="tool-tag">Gmail</span><span class="tool-tag">Telegram</span>' }
+            { title: "使用ツール", body: '<span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' }
           ]
         }]
       },
@@ -764,7 +764,7 @@ const data = [
             { title: "獲得経路・温度管理", list: ["獲得経路(紹介・リファラル/SNS/知人・直接アプローチ)", "ステータス(新規/アプローチ中/面談設定/提案中/稼働決定/見送り)", "温度感スコア(A:すぐ動きたい/B:条件次第/C:情報収集中)"] },
             { title: "人材のライフサイクル", list: ["発掘 → 接触 → ヒアリング → 条件整理 → 案件提案 → 稼働決定"] },
             { title: "運用ルール", list: ["連絡・面談は当日中に記録する", "次回アクションと期限を必ずセットで残す", "一定期間動きがない見込みメンバーは温度感を見直す"] },
-            { title: "使用ツール", body: '<span class="tool-tag">kintone</span><span class="tool-tag">Gmail</span><span class="tool-tag">Telegram</span>' }
+            { title: "使用ツール", body: '<span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' }
           ]
         }],
         crossLinks: [
@@ -817,9 +817,9 @@ const data = [
         sections: [{
           title: "契約管理の概要",
           subsections: [
-            { title: "概要", body: "契約内容・締結状況・更新状況を管理します。全契約は電子契約(freeeサイン)を原則とし、原本はGoogle Driveに保存。kintoneで台帳管理。" },
-            { title: "主な業務", list: ["契約書作成(テンプレートはGoogle Drive内)", "契約内容確認(法務フェーズと連携)", "電子契約送付(freeeサイン)", "締結確認・台帳登録(kintone)", "契約更新管理(更新3ヶ月前にリマインド)"] },
-            { title: "使用ツール", body: '<span class="tool-tag">freeeサイン</span><span class="tool-tag">Google Drive</span><span class="tool-tag">kintone</span>' }
+            { title: "概要", body: "契約内容・締結状況・更新状況を管理します。全契約は電子契約(freeeサイン)を原則とし、原本を所定の保管場所に保存して契約台帳で管理します。" },
+            { title: "主な業務", list: ["契約書作成(所定のテンプレートを使用)", "契約内容確認(法務フェーズと連携)", "電子契約送付(freeeサイン)", "締結確認・契約台帳への登録", "契約更新管理(更新3ヶ月前にリマインド)"] },
+            { title: "使用ツール", body: '<span class="tool-tag">freeeサイン</span><span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' }
           ]
         }],
         crossLinks: [
@@ -835,7 +835,7 @@ const data = [
           title: "電子契約の概要",
           subsections: [
             { title: "概要", body: "freeeサインを利用した電子契約の標準フローを定めます。書面契約は原則禁止とし、例外は管理者承認を必須とします。" },
-            { title: "運用フロー", list: ["テンプレート選択 → 契約内容入力", "freeeサインで送付(担当者→契約相手)", "相手方の電子署名取得", "締結後PDFをGoogle Driveに自動保存", "kintone台帳に登録"] }
+            { title: "運用フロー", list: ["テンプレート選択 → 契約内容入力", "freeeサインで送付(担当者→契約相手)", "相手方の電子署名取得", "締結後PDFを所定の保管場所に保存", "契約台帳に登録"] }
           ]
         }]
       },
@@ -862,7 +862,7 @@ const data = [
           title: "アカウント管理の概要",
           subsections: [
             { title: "概要", body: "社内アカウント・権限を管理します。発行〜権限付与〜退職時停止までのライフサイクルを追跡。" },
-            { title: "管理対象", body: '<span class="tool-tag">Google Workspace</span><span class="tool-tag">Gmail</span><span class="tool-tag">kintone</span><span class="tool-tag">freee</span><span class="tool-tag">Slack</span><span class="tool-tag">Telegram</span><span class="tool-tag">Zoom</span>' },
+            { title: "管理対象", body: '<span class="tool-tag">Slack</span><span class="tool-tag">グループLINE</span><span class="tool-tag">freee</span><span class="tool-tag">Zoom</span>' },
             { title: "管理内容", list: ["アカウント発行(入社時に一括)", "権限付与(役割に応じてロール設定)", "パスワード管理(共有禁止・定期変更)", "退職時停止(退職日に即時停止)"] }
           ]
         }],
@@ -890,7 +890,7 @@ const data = [
           title: "発注依頼の概要",
           subsections: [
             { title: "概要", body: "備品購入・サービス契約・外注発注など、社内からの発注依頼を一元管理します。" },
-            { title: "運用フロー", list: ["発注依頼フォーム提出(kintone)", "管理者承認", "発注実行・支払処理", "経理フェーズへ仕訳連携"] }
+            { title: "運用フロー", list: ["Slackで発注依頼を共有", "管理者承認", "発注実行・支払処理", "経理フェーズへ仕訳連携"] }
           ]
         }]
       },
@@ -974,7 +974,7 @@ const data = [
         sections: [{ title: "会計処理の概要", subsections: [
           { title: "概要", body: "日々の取引を仕訳としてfreee会計に登録します。銀行・クレカは自動取込を活用。" },
           { title: "主な業務", list: ["仕訳登録(freee会計)", "勘定科目の整備", "経費計上", "月次残高照合"] },
-          { title: "使用ツール", body: '<span class="tool-tag">freee会計</span><span class="tool-tag">Google Drive</span>' }
+          { title: "使用ツール", body: '<span class="tool-tag">freee会計</span><span class="tool-tag">Slack</span>' }
         ]}]
       },
       {
@@ -1024,9 +1024,9 @@ const data = [
       {
         id: "recruit", title: "採用管理", desc: "応募〜内定〜入社準備",
         sections: [{ title: "採用管理の概要", subsections: [
-          { title: "概要", body: "応募者情報・面談状況・採用可否を一元管理。応募〜内定〜契約締結〜入社初期設定まで一貫してkintoneで管理。" },
-          { title: "主な業務", list: ["応募者対応(問い合わせ受付・書類確認)", "面談日程調整(Googleカレンダー)", "面談実施(Google Meet / Zoom)", "採用可否判断(社内会議で決定)", "契約書送付(freeeサイン)", "初期設定依頼(アカウント・デバイス)"] },
-          { title: "使用ツール", body: '<span class="tool-tag">Google Meet</span><span class="tool-tag">Gmail</span><span class="tool-tag">Googleカレンダー</span><span class="tool-tag">freeeサイン</span><span class="tool-tag">kintone</span>' }
+          { title: "概要", body: "応募者情報・面談状況・採用可否を一元管理します。応募から内定、契約締結、入社初期設定までの進捗を追跡し、社内共有はSlack、応募者との連絡はグループLINEで行います。" },
+          { title: "主な業務", list: ["応募者対応(問い合わせ受付・書類確認)", "面談日程調整(グループLINE)", "面談実施(対面/オンライン)", "採用可否判断(社内会議で決定)", "契約書送付(freeeサイン)", "初期設定依頼(アカウント・デバイス)"] },
+          { title: "使用ツール", body: '<span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span><span class="tool-tag">freeeサイン</span>' }
         ]}],
         crossLinks: [
           { phase: "phase-office", phaseTitle: "事務フェーズ", category: "account", categoryTitle: "アカウント管理", note: "入社時のアカウント発行依頼" }
@@ -1139,9 +1139,8 @@ const data = [
       {
         id: "tools", title: "使用ツール一覧", desc: "全社共通ツール構成",
         sections: [{ title: "ツール構成", subsections: [
-          { title: "グループウェア", body: "全社共通の基盤ツール。アカウントはGoogle Workspaceに統合。", list: ["Google Workspace / Googleカレンダー", "Google Drive / Gmail / Google Meet"] },
-          { title: "コミュニケーション", body: "用途別にチャネルを使い分けます。", list: ["Telegram(社内即時連絡)", "Slack(プロジェクト別)", "Zoom(社外MTG)", "Chatwork(顧客連絡)"] },
-          { title: "業務管理", list: ["kintone(案件・顧客・タスク管理)", "freee会計(経理・請求)", "freeeサイン(電子契約)", "SmartHR(労務・人事)", "Notta(議事録自動化)"] },
+          { title: "コミュニケーション", body: "社内連絡・情報共有にはSlack、取引先・見込みメンバーなど社外との連絡にはグループLINEを使用します。", list: ["Slack(社内連絡・情報共有・進捗報告)", "グループLINE(社外連絡・取引先・メンバーとの連携)"] },
+          { title: "業務管理", list: ["freee会計(経理・請求)", "freeeサイン(電子契約)", "SmartHR(労務・人事)", "Notta(議事録自動化)"] },
           { title: "AI・自動化", list: ["ChatGPT", "Claude", "Gemini"] },
           { title: "セキュリティ", list: ["ID・PASS管理", "デバイス管理", "アクセス権限管理", "VPN管理"] }
         ]}]
@@ -1159,7 +1158,7 @@ const data = [
         id: "meeting", title: "定例MTG運用", desc: "MTG運用ルール",
         sections: [{ title: "MTG運用ルール", subsections: [
           { title: "概要", body: "定例MTGを通じて、進捗確認・課題共有・PDCA管理を行います。議事録は自動化し、タスク化までを定型フローで管理。" },
-          { title: "運用ルール", list: ["毎週定例MTG実施(曜日固定)", "Nottaで議事録自動作成", "kintoneへToDo登録(担当・期限明記)", "Telegramで進捗報告", "次回MTGで振り返り(PDCA)"] }
+          { title: "運用ルール", list: ["毎週定例MTG実施(曜日固定)", "Nottaで議事録自動作成", "SlackでToDo共有(担当・期限明記)", "Slackで進捗報告", "次回MTGで振り返り(PDCA)"] }
         ]}]
       },
       {
@@ -1173,7 +1172,7 @@ const data = [
       {
         id: "roadmap", title: "今後の拡張予定", desc: "自動化・AI連携ロードマップ",
         sections: [{ title: "ロードマップ", subsections: [
-          { title: "自動化予定", list: ["kintone × freee連携", "Telegram通知自動化", "Googleカレンダー連携", "勤怠自動集計", "契約締結後の請求自動発行"] },
+          { title: "自動化予定", list: ["Slack通知自動化", "案件・人材情報の進捗共有", "勤怠自動集計", "契約締結後の請求自動発行"] },
           { title: "AI連携", list: ["AI議事録整理", "AI営業分析", "AIマニュアル更新", "AIチャットサポート"] },
           { title: "更新情報", body: "作成会社:株式会社ROCK PTARMIGAN<br>初版作成:2026年5月<br>運用管理:管理者" }
         ]}]
