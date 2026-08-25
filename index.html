@@ -309,7 +309,12 @@
     color: var(--rp-rock-light);
     padding: 3px 10px; border-radius: 12px; font-size: 12px;
     margin: 2px 4px 2px 0; border: 1px solid rgba(217,119,87,0.2);
+    text-decoration: none;
   }
+  a.tool-tag:hover { border-color: var(--rp-alpenglow); color: var(--rp-alpenglow); }
+  .tool-list-link { color: var(--rp-info); text-decoration: none; }
+  .tool-list-link:hover { text-decoration: underline; }
+  .tool-list-link::after { content: " ↗"; font-size: 11px; }
   .ops-tool-link {
     display: inline-block; padding: 10px 14px; margin: 0 0 8px;
     background: rgba(58,110,165,0.08); border: 1px solid rgba(58,110,165,0.24);
@@ -516,6 +521,47 @@ function escapeHtml(s) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+/* 使用ツールは全ページ共通のURLで別タブ表示する */
+const TOOL_URLS = Object.freeze({
+  "Slack": "https://app.slack.com/client/",
+  "グループLINE": "https://line.me/ja/",
+  "freee": "https://secure.freee.co.jp/",
+  "freee会計": "https://secure.freee.co.jp/",
+  "freeeサイン": "https://www.freee.co.jp/sign/",
+  "SmartHR": "https://app.smarthr.jp/",
+  "Notta": "https://app.notta.ai/",
+  "ChatGPT": "https://chatgpt.com/",
+  "Claude": "https://claude.ai/",
+  "Gemini": "https://gemini.google.com/",
+  "Zoom": "https://zoom.us/signin",
+  "GitHub Desktop": "https://desktop.github.com/",
+  "GitHub": "https://github.com/",
+  "Vercel": "https://vercel.com/dashboard",
+  "VS Code": "https://code.visualstudio.com/",
+  "Google Analytics": "https://analytics.google.com/",
+  "Search Console": "https://search.google.com/search-console",
+  "スプレッドシート": "https://docs.google.com/spreadsheets/"
+});
+
+function getToolUrl(label) {
+  const toolName = String(label).replace(/[（(].*$/, "").trim();
+  return TOOL_URLS[toolName] || null;
+}
+
+function linkToolTags(html) {
+  return String(html).replace(/<span class="tool-tag">([^<]+)<\/span>/g, (tag, label) => {
+    const url = getToolUrl(label);
+    if (!url) return tag;
+    return `<a class="tool-tag" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+  });
+}
+
+function linkToolListItem(item) {
+  const url = getToolUrl(item);
+  if (!url) return item;
+  return `<a class="tool-list-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item)}</a>`;
 }
 
 /* localStorage キーの安全化(B2対策・スラッシュやドット衝突回避) */
@@ -1488,10 +1534,10 @@ function showPhase(phaseId) {
           sec.subsections.forEach(sub => {
             html += `<h4>${escapeHtml(sub.title)}</h4>`;
             // bodyとlistはコンテンツ著者(管理者)が書いたHTMLを許可
-            if (sub.body) html += `<p>${sub.body}</p>`;
+            if (sub.body) html += `<p>${linkToolTags(sub.body)}</p>`;
             if (sub.list) {
               html += "<ul>";
-              sub.list.forEach(item => { html += `<li>${item}</li>`; });
+              sub.list.forEach(item => { html += `<li>${linkToolListItem(item)}</li>`; });
               html += "</ul>";
             }
           });
@@ -1591,10 +1637,10 @@ function showCategory(phaseId, categoryId) {
         // S5:サブセクションにアンカーIDを付与
         const anchorId = `s-${escapeHtml(categoryId)}-${secIdx}-${subIdx}`;
         html += `<h4 id="${anchorId}">${escapeHtml(sub.title)}<a href="#${anchorId}" class="anchor-link" aria-label="このセクションへのリンク">#</a></h4>`;
-        if (sub.body) html += `<p>${sub.body}</p>`;
+        if (sub.body) html += `<p>${linkToolTags(sub.body)}</p>`;
         if (sub.list) {
           html += "<ul>";
-          sub.list.forEach(item => { html += `<li>${item}</li>`; });
+          sub.list.forEach(item => { html += `<li>${linkToolListItem(item)}</li>`; });
           html += "</ul>";
         }
       });
