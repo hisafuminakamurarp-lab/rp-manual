@@ -602,7 +602,7 @@ const data = [
                 title: "6つのフェーズ",
                 body: "ROCK PTARMIGANの業務は以下6フェーズで構成されます。各フェーズは独立した責任範囲を持ちながら、相互に連携します。",
                 list: [
-                  "<strong>1. 営業フェーズ</strong> ─ 売上を生む(リード→案件→受注)",
+                  "<strong>1. 営業フェーズ</strong> ─ 案件と人材をつなぐ(toB案件獲得・toC人材獲得)",
                   "<strong>2. 事務フェーズ</strong> ─ 業務を回す(契約・請求・アカウント)",
                   "<strong>3. 経理フェーズ</strong> ─ 数字を管理する(会計・決算・予実)",
                   "<strong>4. 人事フェーズ</strong> ─ 人を支える(採用・労務・給与)",
@@ -612,7 +612,7 @@ const data = [
               },
               {
                 title: "業務連携の流れ",
-                body: "営業が受注 → 事務が契約・請求 → 経理が入金処理・会計 → 法務が契約リスクを継続監視。人事と共通基盤は全フェーズを横断的に支えます。"
+                body: "営業が案件と人材を獲得・マッチング → 事務が契約・稼働開始・請求 → 経理が入金処理・会計 → 法務が契約リスクを継続監視。人事と共通基盤は全フェーズを横断的に支えます。"
               }
             ]
           }
@@ -729,88 +729,91 @@ const data = [
   {
     id: "phase-sales",
     title: "1. 営業フェーズ",
-    description: "リード獲得から受注までの売上創出フェーズ",
-    responsibility: "売上の創出と顧客接点の管理。リード獲得、商談、受注、契約締結までを担当。",
+    description: "案件と人材の両面から、通信人材事業の稼働機会を創出するフェーズ",
+    responsibility: "取引先・現場との関係構築、案件・募集枠の獲得、見込みメンバーの獲得、ヒアリング、案件提案、条件調整、契約前確認を担当。",
     categories: [
       {
-        id: "lead",
-        title: "リード管理",
-        desc: "見込み顧客の獲得と分類",
+        id: "customer",
+        title: "案件獲得営業（toB）",
+        desc: "取引先・現場との関係構築、案件獲得・増枠交渉",
         sections: [{
-          title: "リード管理の概要",
+          title: "案件獲得営業（toB）の概要",
           subsections: [
-            { title: "概要", body: "見込み顧客(リード)の獲得・分類・育成を管理します。獲得経路ごとに温度感をスコアリングし、商談化までのフローを可視化します。" },
-            { title: "管理項目", list: ["獲得経路(Web問い合わせ/紹介/イベント/広告)", "リードステータス(新規/接触中/商談化/失注)", "温度感スコア(A/B/C)", "次回アクション・期限"] },
+            { title: "概要", body: "取引先や既存現場との関係構築を通じて、通信人材が稼働できる案件・募集枠を獲得します。現場での実績や信頼関係を生かした案件紹介・増枠交渉も含みます。" },
+            { title: "主な業務", list: ["既存現場・取引先との関係構築", "新規取引先の開拓・商談", "案件情報・募集枠の収集", "単価・勤務地・勤務条件の確認", "既存案件の増枠交渉", "取引開始・契約条件の調整"] },
             { title: "使用ツール", body: '<span class="tool-tag">kintone</span><span class="tool-tag">Gmail</span><span class="tool-tag">Telegram</span>' }
           ]
         }]
       },
       {
-        id: "customer",
-        title: "顧客管理",
-        desc: "企業情報・担当者の一元管理",
+        id: "marketing",
+        title: "人材獲得営業（toC）",
+        desc: "紹介・アプローチ・面談による見込み人材の獲得",
         sections: [{
-          title: "顧客管理の概要",
+          title: "人材獲得営業（toC）の概要",
           subsections: [
-            { title: "概要", body: "顧客企業の基本情報・担当者・取引履歴を一元管理します。kintoneを正としBtoB/BtoCを分離管理。" },
-            { title: "管理項目", list: ["企業情報(社名/業種/規模)", "担当者情報(氏名/役職/連絡先)", "取引履歴(過去案件・契約・請求)", "対応履歴(商談ログ・要望)"] }
+            { title: "概要", body: "紹介・リファラル・現場のつながりから見込みメンバーを獲得し、ヒアリングと案件提案を通じて稼働につなげます。現状の不満、希望条件、キャリア意向を把握し、本人に合う案件を提案します。" },
+            { title: "主な業務", list: ["紹介・リファラルによる候補者の獲得", "見込みメンバーへのアプローチ", "面談・ヒアリング", "希望条件・キャリア意向の整理", "通信案件の提案・マッチング", "条件調整・稼働意思の確認"] },
+            { title: "営業の流れ", list: ["見込みメンバー獲得 → アプローチ → ヒアリング → 案件提案 → 条件調整 → 稼働意思確認"] },
+            { title: "使用ツール", body: '<span class="tool-tag">kintone</span><span class="tool-tag">Gmail</span><span class="tool-tag">Telegram</span>' }
           ]
-        }]
+        }],
+        crossLinks: [
+          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "web", categoryTitle: "Web管理", note: "採用情報・紹介導線の整備と連動" }
+        ]
       },
       {
         id: "deal",
         title: "案件管理",
-        desc: "BtoB・BtoC・単発契約の進捗管理",
+        desc: "案件・募集枠・勤務条件・単価などの管理",
         sections: [{
           title: "案件管理の概要",
           subsections: [
-            { title: "概要", body: "案件の進捗ステージ・受注確度・金額を管理します。BtoB/BtoC/単発契約をkintoneアプリで分離管理。" },
-            { title: "案件タイプ", list: ["BtoB案件管理(法人取引・継続契約)", "BtoC案件管理(個人取引)", "単発契約(スポット案件)"] },
-            { title: "進捗ステージ", list: ["提案中 → 見積提出 → 商談中 → 受注 → 契約締結"] }
+            { title: "概要", body: "取引先・現場から獲得した通信案件の募集枠、勤務地、稼働条件、単価、募集状況を一元管理します。見込みメンバーへの提案と配属判断に必要な情報を整理します。" },
+            { title: "管理項目", list: ["取引先・現場・担当者", "案件種別・キャリア(SB/ドコモ等)", "勤務地・稼働開始時期", "募集人数・充足状況", "単価・勤務条件・必要スキル", "提案状況・配属予定メンバー"] },
+            { title: "進捗ステージ", list: ["案件情報取得 → 条件確認 → 募集中 → 人材提案 → 配属決定 → 稼働開始"] }
+          ]
+        }]
+      },
+      {
+        id: "lead",
+        title: "見込みメンバー管理",
+        desc: "候補者情報・希望条件・温度感・次回対応の管理",
+        sections: [{
+          title: "見込みメンバー管理の概要",
+          subsections: [
+            { title: "概要", body: "紹介・現場・アプローチから接点を持った見込みメンバーの情報、希望条件、現在の状況、温度感、次回アクションを管理します。候補者ごとの進捗を可視化し、案件提案につなげます。" },
+            { title: "管理項目", list: ["氏名・連絡先・紹介者", "現在の勤務状況・通信業界での経験", "希望条件(勤務地/単価/稼働開始時期)", "現状の不満・キャリア意向", "温度感・検討状況", "提案案件・次回アクション・対応期限"] },
+            { title: "進捗ステージ", list: ["見込みメンバー登録 → アプローチ → ヒアリング → 案件提案 → 条件調整 → 稼働決定"] }
           ]
         }]
       },
       {
         id: "activity",
-        title: "活動管理",
-        desc: "営業活動・商談ログ",
+        title: "営業活動管理",
+        desc: "商談・連絡・面談・現場との関係構築履歴",
         sections: [{
-          title: "活動管理の概要",
+          title: "営業活動管理の概要",
           subsections: [
-            { title: "概要", body: "営業活動(訪問・MTG・電話・メール)を記録し、次のアクションへの引き継ぎを明確にします。" },
-            { title: "管理項目", list: ["活動種別(訪問/オンラインMTG/電話/メール)", "対応内容・所感", "次回アクション・期限", "案件への紐付け"] }
+            { title: "概要", body: "toBの商談・現場訪問・関係構築と、toCのアプローチ・面談・案件提案を記録します。対応履歴と次回アクションを明確にし、担当者間で進捗を共有します。" },
+            { title: "管理項目", list: ["営業対象(取引先・現場/見込みメンバー)", "活動種別(現場訪問/商談/紹介/電話/面談)", "対応内容・ヒアリング結果", "関連案件・募集枠", "次回アクション・期限", "担当者・引き継ぎ事項"] }
           ]
         }]
       },
       {
         id: "order-check",
-        title: "受注チェック",
-        desc: "受注前の与信・条件確認",
+        title: "契約前チェック",
+        desc: "案件条件・本人意思・必要書類・稼働可否の確認",
         sections: [{
-          title: "受注チェックの概要",
+          title: "契約前チェックの概要",
           subsections: [
-            { title: "概要", body: "受注確定前の条件確認・与信チェック・社内承認を行います。法務フェーズのリーガルチェックと連携。" },
-            { title: "チェック項目", list: ["契約条件の妥当性", "与信(取引先信用情報)", "支払条件・スケジュール", "社内承認フロー"] }
+            { title: "概要", body: "案件決定後、取引条件と本人の希望条件に相違がないかを確認し、必要書類、契約手続き、稼働開始の可否を整理します。事務フェーズの契約管理と法務フェーズのリーガルチェックに連携します。" },
+            { title: "チェック項目", list: ["取引先・案件条件・単価の確定", "勤務地・稼働開始日・勤務条件の確認", "本人の稼働意思・希望条件との整合", "必要書類・提出期限の確認", "契約条件・支払条件の妥当性", "事務・法務への引き継ぎ"] }
           ]
         }],
         crossLinks: [
+          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "contract", categoryTitle: "契約管理", note: "条件確定後に契約・稼働準備へ移行" },
           { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "legal-check", categoryTitle: "リーガルチェック", note: "契約条件の法的審査" }
-        ]
-      },
-      {
-        id: "marketing",
-        title: "マーケティング施策",
-        desc: "リード獲得・ブランディング",
-        sections: [{
-          title: "マーケティング施策の概要",
-          subsections: [
-            { title: "概要", body: "リード獲得・ブランディング・SNS運用を企画運用します。Web管理(事務フェーズ)と連携。" },
-            { title: "主な施策", list: ["コンテンツマーケティング", "広告運用(リスティング/SNS広告)", "SNS運用(投稿カレンダー)", "メールマーケティング"] },
-            { title: "使用ツール", body: '<span class="tool-tag">Google Analytics</span><span class="tool-tag">Search Console</span>' }
-          ]
-        }],
-        crossLinks: [
-          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "web", categoryTitle: "Web管理", note: "LP/サイト運用と連動" }
         ]
       }
     ]
@@ -835,7 +838,7 @@ const data = [
           ]
         }],
         crossLinks: [
-          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "order-check", categoryTitle: "受注チェック", note: "受注確定後に契約管理へ移行" },
+          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "order-check", categoryTitle: "契約前チェック", note: "案件・稼働条件の確定後に契約管理へ移行" },
           { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "contract-risk", categoryTitle: "契約リスク管理", note: "契約条項の法的妥当性確認" }
         ]
       },
@@ -931,7 +934,7 @@ const data = [
           ]
         }],
         crossLinks: [
-          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "marketing", categoryTitle: "マーケティング施策", note: "施策とサイト運用が連動" }
+          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "marketing", categoryTitle: "人材獲得営業（toC）", note: "採用情報・紹介導線の整備と連動" }
         ]
       }
     ]
@@ -1111,7 +1114,7 @@ const data = [
           { title: "チェック項目", list: ["契約条項の妥当性", "リスク条項の有無", "個人情報保護法対応", "知的財産権の取り扱い", "解約条項・損害賠償条項"] }
         ]}],
         crossLinks: [
-          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "order-check", categoryTitle: "受注チェック", note: "受注前審査" },
+          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "order-check", categoryTitle: "契約前チェック", note: "契約・稼働開始前の条件審査" },
           { phase: "phase-office", phaseTitle: "事務フェーズ", category: "contract", categoryTitle: "契約管理", note: "契約締結前審査" }
         ]
       },
