@@ -310,6 +310,13 @@
     padding: 3px 10px; border-radius: 12px; font-size: 12px;
     margin: 2px 4px 2px 0; border: 1px solid rgba(217,119,87,0.2);
   }
+  .ops-tool-link {
+    display: inline-block; padding: 10px 14px; margin: 0 0 8px;
+    background: rgba(58,110,165,0.08); border: 1px solid rgba(58,110,165,0.24);
+    border-radius: 6px; color: var(--rp-info); font-weight: 600;
+    text-decoration: none;
+  }
+  .ops-tool-link:hover { text-decoration: underline; }
 
   .cross-links {
     background: rgba(58,110,165,0.06);
@@ -729,42 +736,47 @@ const data = [
   {
     id: "phase-sales",
     title: "1. 営業フェーズ",
-    description: "案件と人材の両面から、通信人材事業の稼働機会を創出するフェーズ",
-    responsibility: "取引先・現場との関係構築、案件・募集枠の獲得と管理、見込みメンバーの獲得と管理、条件調整、契約・稼働前準備を担当。",
+    description: "案件と人材を確保し、両者のマッチングから稼働決定までを担うフェーズ",
+    responsibility: "案件・募集枠の獲得と管理、見込みメンバーの獲得と管理、案件提案、条件調整、本人・取引先の意思確認、稼働決定までを担当。契約・入場準備は事務フェーズへ引き継ぐ。",
     categories: [
       {
-        id: "customer",
+        id: "project",
         title: "案件営業・管理",
-        desc: "案件獲得・関係構築・募集枠・条件・増枠の管理",
+        desc: "toB｜案件獲得・関係構築・募集枠・条件管理",
         sections: [{
           title: "案件営業・管理の概要",
           subsections: [
-            { title: "概要", body: "取引先や既存現場との関係構築を通じて通信案件・募集枠を獲得し、案件の発掘から条件確認、更新、増枠、終了までを一元管理します。現場での実績や信頼関係を生かした案件紹介・増枠交渉も含みます。" },
-            { title: "主な業務", list: ["既存現場・取引先との関係構築", "新規取引先の開拓・商談", "案件情報・募集枠の収集と登録", "単価・勤務地・勤務条件の確認", "既存案件の更新・増枠交渉", "取引開始・契約条件の調整", "募集状況・終了予定の管理"] },
+            { title: "概要", body: "取引先・現場との関係構築から、通信案件の獲得、募集枠・単価の管理、増枠交渉、終了確認までを一元管理します。ゴールは、メンバーが稼働できる案件・枠を確保することです。" },
+            { title: "使用ツール", body: '<span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' },
+            { title: "案件を新規獲得したとき", list: ["取引先・現場担当者と募集背景を確認する", "キャリア・業務内容・勤務地・開始時期を整理する", "単価・募集人数・必要スキルを確認する", "案件情報と担当者をSlackで社内共有する"] },
+            { title: "案件情報を登録するとき", list: ["取引先・現場・担当者の連絡先を記録する", "募集枠・勤務地・単価・勤務条件を入力する", "稼働開始時期と必要スキルを記録する", "次回確認日・担当者を設定する"] },
+            { title: "募集枠を更新するとき", list: ["現場担当者から最新の募集人数・充足状況を確認する", "増枠余地と追加提案の可否を確認する", "最新の募集状況を記録・共有する", "社内への共有はSlack、社外との確認はグループLINEで行う"] },
+            { title: "単価・条件が変更されたとき", list: ["変更前後の単価・勤務条件・適用開始日を確認する", "提案中のメンバーへの影響を確認する", "変更内容をSlackで社内共有する"] },
+            { title: "案件が終了したとき", list: ["終了日・終了理由・追加募集停止の有無を確認する", "稼働中または提案中のメンバーへの影響を確認する", "終了状況と引き継ぎ内容をSlackで社内共有する"] },
             { title: "案件の管理項目", list: ["取引先・現場・担当者", "案件種別・キャリア(SB/ドコモ等)", "勤務地・稼働開始時期", "募集人数・充足状況", "単価・勤務条件・必要スキル", "提案状況・配属予定メンバー", "更新時期・増枠余地・終了予定"] },
-            { title: "案件のライフサイクル", list: ["発掘 → 案件獲得 → 条件確認 → 募集・提案 → 配属 → 更新・増枠 → 終了"] },
-            { title: "活動・進捗管理", list: ["現場訪問・商談・連絡内容を当日中に記録", "次回アクション・対応期限・担当者を明確化", "取引先・案件ごとに対応履歴を共有"] },
-            { title: "使用ツール", body: '<span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' }
+            { title: "案件のライフサイクル", list: ["発掘 → 案件獲得 → 条件確認 → 募集 → 提案 → 更新・増枠 → 終了"] }
           ]
         }]
       },
       {
-        id: "marketing",
+        id: "member",
         title: "人材営業・管理",
-        desc: "見込みメンバーの獲得・面談・温度・進捗管理",
+        desc: "toC｜紹介・見込みメンバー・面談・進捗管理",
         sections: [{
           title: "人材営業・管理の概要",
           subsections: [
-            { title: "概要", body: "紹介・リファラル・現場のつながりから見込みメンバーを獲得し、発掘、接触、ヒアリング、進捗管理、稼働決定までを一元管理します。現状の不満、希望条件、キャリア意向を整理し、案件提案につなげます。" },
-            { title: "主な業務", list: ["紹介・リファラルによる候補者の獲得", "見込みメンバーの登録・アプローチ", "面談・ヒアリング", "希望条件・キャリア意向の整理", "温度感・進捗・次回アクションの管理", "稼働意思の確認・担当者間の引き継ぎ"] },
-            { title: "見込みメンバーの管理項目", list: ["氏名・連絡先・紹介者", "現在の勤務状況・通信業界での経験", "希望条件(勤務地/単価/稼働開始時期)", "現状の不満・キャリア意向", "温度感・検討状況", "提案案件・次回アクション・対応期限"] },
+            { title: "概要", body: "紹介・リファラル・現場のつながりから見込みメンバーを獲得し、登録、アプローチ、ヒアリング、温度管理、次回アクションまでを一元管理します。ゴールは、案件へ提案できる人材を確保することです。" },
+            { title: "使用ツール", body: '<a class="ops-tool-link" href="https://docs.google.com/spreadsheets/d/1f17a7FL4-5MI13xpJuon3YfBNV1T1fMK4UALpoxZoFQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">🔗 見込み人材管理スプレッドシートを開く</a><br><span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' },
+            { title: "見込みメンバーを登録する", list: ["シートの「01_見込みメンバー」に氏名・発見者・所属会社・現場を登録する", "キャリア・現在の契約形態・関係性を記録する", "アプローチ担当・優先度・予定日を設定する", "未接触の段階でも見込み候補として登録する"] },
+            { title: "初回アプローチをする", list: ["紹介者や現場との関係性を確認する", "本人へ自然な接点をつくり、初回接触日を記録する", "社外との連絡はグループLINEを使用する", "アプローチステータスを更新する"] },
+            { title: "ヒアリングする", list: ["現在の就業環境・収入・勤務地・シフトを確認する", "現状の不満・希望条件・キャリア意向を把握する", "稼働可能時期・通勤範囲・NG条件を確認する", "本人の発言と事実を人材管理シートへ当日中に記録する"] },
+            { title: "温度を更新する", list: ["本人の反応と希望条件から優先度を見直す", "A:すぐ動きたい/B:条件次第/C:情報収集中を判定する", "一定期間動きがない場合は温度感と担当を再確認する"] },
+            { title: "次回アクションを設定する", list: ["次回の連絡・面談・案件提案を決める", "担当者と対応期限を必ずセットで記録する", "「02_営業ボード」で要対応者と対応状況を確認する", "進捗・引き継ぎはSlackで社内共有する"] },
+            { title: "案件提案へ進める", list: ["本人の希望条件と稼働可能時期を確定する", "提案可能な案件があるかを確認する", "アプローチステータスを更新する", "マッチング・稼働決定へ引き継ぐ"] },
             { title: "ヒアリング項目", list: ["現状の不満(収入/勤務地/シフト/人間関係/将来性)", "希望条件(月収/エリア/勤務形態/開始時期)", "キャリア意向(正社員志向/経験を積みたい/未経験からの挑戦)", "稼働可能時期・通勤範囲・引越し可否", "NG条件(避けたい業務・環境)"] },
-            { title: "面談の進め方", body: "対面・オンラインいずれでも実施可。現状の整理 → 希望条件の優先順位付け → 次回アクション(案件提案の日程)の確定までをワンセットで行い、面談内容は当日中に記録します。" },
             { title: "紹介・リファラル活動", list: ["稼働中メンバー・過去の面談者・知人ネットワークへの紹介依頼", "紹介インセンティブの案内・支払い管理", "紹介者への進捗フィードバック", "SNS運用(投稿・DM対応)", "紹介経路ごとの実績集計"] },
-            { title: "獲得経路・温度管理", list: ["獲得経路(紹介・リファラル/SNS/知人・直接アプローチ)", "ステータス(新規/アプローチ中/面談設定/提案中/稼働決定/見送り)", "温度感スコア(A:すぐ動きたい/B:条件次第/C:情報収集中)"] },
-            { title: "人材のライフサイクル", list: ["発掘 → 接触 → ヒアリング → 条件整理 → 案件提案 → 稼働決定"] },
-            { title: "運用ルール", list: ["連絡・面談は当日中に記録する", "次回アクションと期限を必ずセットで残す", "一定期間動きがない見込みメンバーは温度感を見直す"] },
-            { title: "使用ツール", body: '<span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' }
+            { title: "見込みメンバーの管理項目", list: ["人材ID・氏名・発見者・紹介者", "所属会社・現場・キャリア・現在の契約形態", "関係性・アプローチステータス・優先度", "アプローチ担当・予定日・初回接触日", "案件化・メモ・備考"] },
+            { title: "人材のライフサイクル", list: ["見込み発見 → 登録 → アプローチ → ヒアリング → 条件整理 → 案件提案"] }
           ]
         }],
         crossLinks: [
@@ -772,19 +784,24 @@ const data = [
         ]
       },
       {
-        id: "order-check",
-        title: "契約・稼働前対応",
-        desc: "契約条件・必要書類・入場・稼働開始準備",
+        id: "matching",
+        title: "マッチング・稼働決定",
+        desc: "案件 × 人材｜案件提案・条件調整・稼働決定",
         sections: [{
-          title: "契約・稼働前対応の概要",
+          title: "マッチング・稼働決定の概要",
           subsections: [
-            { title: "概要", body: "案件決定後、取引条件と本人の希望条件に相違がないかを確認し、必要書類、契約手続き、稼働開始の可否を整理します。事務フェーズの契約管理と法務フェーズのリーガルチェックに連携します。" },
-            { title: "チェック項目", list: ["取引先・案件条件・単価の確定", "勤務地・稼働開始日・勤務条件の確認", "本人の稼働意思・希望条件との整合", "必要書類の回収(身分証/口座情報/各種同意書)", "入場手続き・研修日程の確認", "初日案内(集合場所・持ち物・連絡手段)", "緊急連絡先・フォロー担当の確定", "契約条件・支払条件の妥当性", "事務・法務への引き継ぎ"] }
+            { title: "概要", body: "確保した案件と見込みメンバーを照合し、本人・取引先への提案、条件調整、双方の意思確認を進めます。誰がどの案件で稼働するかを決定した時点で営業フェーズは完了し、契約・入場準備を事務フェーズへ引き継ぎます。" },
+            { title: "使用ツール", body: '<span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' },
+            { title: "案件を選定するとき", list: ["案件の勤務地・単価・勤務条件・開始時期を確認する", "見込みメンバーの希望条件・経験・稼働可能時期と照合する", "募集枠と必要スキルに適合する候補者を選定する"] },
+            { title: "候補者へ案件を提案するとき", list: ["本人へ案件内容・勤務地・単価・勤務条件を説明する", "本人の反応・懸念点・希望条件を記録する", "必要に応じて取引先・現場へ候補者情報を共有する"] },
+            { title: "条件を調整するとき", list: ["給与・単価・勤務日数・シフト・開始日を調整する", "本人と取引先の認識に相違がないか確認する", "調整経緯をSlackで社内共有する"] },
+            { title: "稼働を決定するとき", list: ["本人の稼働意思と取引先の受け入れ意思を確認する", "誰が・どの案件で・いつから稼働するかを確定する", "案件化・稼働決定の状況をSlackで社内共有する", "契約締結・必要書類・クルーコード・入場準備を事務フェーズへ引き継ぐ"] },
+            { title: "営業フェーズの終了条件", body: "案件と人材のマッチングが成立し、本人・取引先の双方が合意して稼働が決定していること。契約締結、必要書類、クルーコード取得、入場準備、稼働開始は事務フェーズが担当します。" }
           ]
         }],
         crossLinks: [
-          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "contract", categoryTitle: "契約管理", note: "条件確定後に契約・稼働準備へ移行" },
-          { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "legal-check", categoryTitle: "リーガルチェック", note: "契約条件の法的審査" }
+          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "contract", categoryTitle: "契約管理", note: "稼働決定後の契約締結" },
+          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "onboarding", categoryTitle: "稼働・入場準備", note: "必要書類・クルーコード・入場準備を引き継ぐ" }
         ]
       }
     ]
@@ -793,8 +810,8 @@ const data = [
   {
     id: "phase-office",
     title: "2. 事務フェーズ",
-    description: "契約・請求・アカウント・発注など業務運用の中核フェーズ",
-    responsibility: "業務オペレーションの中核。契約締結、請求発行、アカウント・デバイス管理、Web運用を担当。",
+    description: "契約・稼働準備・請求・アカウント・発注など業務運用の中核フェーズ",
+    responsibility: "営業から稼働決定案件を引き継ぎ、契約締結、必要書類、クルーコード取得、入場・稼働開始準備、請求発行、アカウント・デバイス管理、Web運用を担当。",
     categories: [
       {
         id: "contract",
@@ -809,8 +826,25 @@ const data = [
           ]
         }],
         crossLinks: [
-          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "order-check", categoryTitle: "契約・稼働前対応", note: "案件・稼働条件の確定後に契約管理へ移行" },
+          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "matching", categoryTitle: "マッチング・稼働決定", note: "稼働決定後に営業から契約管理へ引き継ぐ" },
           { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "contract-risk", categoryTitle: "契約リスク管理", note: "契約条項の法的妥当性確認" }
+        ]
+      },
+      {
+        id: "onboarding",
+        title: "稼働・入場準備",
+        desc: "必要書類・クルーコード・入場手続き・稼働開始準備",
+        sections: [{
+          title: "稼働・入場準備の概要",
+          subsections: [
+            { title: "概要", body: "営業フェーズで稼働が決定した案件・メンバーを引き継ぎ、契約条件の確認、必要書類の回収、クルーコード等の手続き、入場準備、稼働初日の案内を担当します。" },
+            { title: "使用ツール", body: '<span class="tool-tag">freeeサイン</span><span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' },
+            { title: "稼働決定後の対応", list: ["営業から案件・メンバー・稼働開始日の確定情報を受け取る", "取引先・本人との契約締結状況を確認する", "必要書類(身分証/口座情報/各種同意書)を回収する", "クルーコード・入場申請など現場固有の手続きを行う", "研修日程・初日の集合場所・持ち物・連絡手段を案内する", "緊急連絡先・フォロー担当を確定する", "稼働開始の可否と準備完了を営業へ共有する"] }
+          ]
+        }],
+        crossLinks: [
+          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "matching", categoryTitle: "マッチング・稼働決定", note: "稼働決定情報を営業から受け取る" },
+          { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "legal-check", categoryTitle: "リーガルチェック", note: "契約条件・入場要件を確認する" }
         ]
       },
       {
@@ -905,7 +939,7 @@ const data = [
           ]
         }],
         crossLinks: [
-          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "marketing", categoryTitle: "人材営業・管理", note: "採用情報・紹介導線の整備と連動" }
+          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "member", categoryTitle: "人材営業・管理", note: "採用情報・紹介導線の整備と連動" }
         ]
       }
     ]
@@ -1085,7 +1119,7 @@ const data = [
           { title: "チェック項目", list: ["契約条項の妥当性", "リスク条項の有無", "個人情報保護法対応", "知的財産権の取り扱い", "解約条項・損害賠償条項"] }
         ]}],
         crossLinks: [
-          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "order-check", categoryTitle: "契約・稼働前対応", note: "契約・稼働開始前の条件審査" },
+          { phase: "phase-office", phaseTitle: "事務フェーズ", category: "onboarding", categoryTitle: "稼働・入場準備", note: "契約・稼働開始前の条件審査" },
           { phase: "phase-office", phaseTitle: "事務フェーズ", category: "contract", categoryTitle: "契約管理", note: "契約締結前審査" }
         ]
       },
@@ -1664,15 +1698,22 @@ function routeFromHash() {
     const phase = data.find(d => d.id === parts[0]);
     if (phase) { showPhase(parts[0]); return true; }
   } else if (parts.length >= 2) {
-    if (parts[0] === "phase-sales" && parts[1] === "deal") {
-      showPhase(parts[0]);
-      return true;
+    if (parts[0] === "phase-sales") {
+      const legacySalesRoutes = {
+        customer: { phase: "phase-sales", category: "project" },
+        marketing: { phase: "phase-sales", category: "member" },
+        lead: { phase: "phase-sales", category: "member" },
+        activity: { phase: "phase-sales", category: "member" },
+        deal: { phase: "phase-sales", category: "matching" },
+        "order-check": { phase: "phase-office", category: "onboarding" }
+      };
+      const legacyRoute = legacySalesRoutes[parts[1]];
+      if (legacyRoute) {
+        showCategory(legacyRoute.phase, legacyRoute.category);
+        return true;
+      }
     }
-    const legacySalesCategories = { lead: "marketing", activity: "marketing" };
-    const categoryId = parts[0] === "phase-sales"
-      ? (legacySalesCategories[parts[1]] || parts[1])
-      : parts[1];
-    showCategory(parts[0], categoryId);
+    showCategory(parts[0], parts[1]);
     return true;
   }
   return false;
