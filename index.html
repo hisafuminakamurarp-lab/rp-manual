@@ -527,11 +527,17 @@ function escapeHtml(s) {
 const TOOL_URLS = Object.freeze({
   "Slack": "https://app.slack.com/client/",
   "グループLINE": "https://line.me/ja/",
+  "LINEオープンチャット": "https://openchat.line.me/jp/",
   "freee": "https://secure.freee.co.jp/",
   "freee会計": "https://secure.freee.co.jp/",
   "freeeサイン": "https://www.freee.co.jp/sign/",
   "SmartHR": "https://app.smarthr.jp/",
   "Notta": "https://app.notta.ai/",
+  "Googleフォーム": "https://docs.google.com/forms/",
+  "Googleスプレッドシート": "https://docs.google.com/spreadsheets/",
+  "Googleドライブ": "https://drive.google.com/",
+  "Googleアカウント": "https://myaccount.google.com/",
+  "住信SBIネット銀行": "https://www.netbk.co.jp/contents/",
   "ChatGPT": "https://chatgpt.com/",
   "Claude": "https://claude.ai/",
   "Gemini": "https://gemini.google.com/",
@@ -676,7 +682,7 @@ const data = [
     id: "phase-sales",
     title: "1. 営業フェーズ",
     description: "案件と人材を確保し、見込みメンバーの案件提案から入社までを進めるフェーズ",
-    responsibility: "案件・募集枠の獲得と管理、見込みメンバーの獲得と管理、案件提案、入社意思・条件・入社日の確認、総務・人事への手続き連携、入社初日の確認までを担当。",
+    responsibility: "案件・募集枠の獲得と管理、見込みメンバーの獲得と管理、案件提案、採用決定、エントリー登録、入社準備、業務委託契約、入社兼稼働開始の確認までを担当。",
     categories: [
       {
         id: "project",
@@ -725,22 +731,25 @@ const data = [
       {
         id: "joining",
         title: "入社フロー",
-        desc: "入社意思確認・条件確定・手続き連携・初日確認",
+        desc: "面談・採用・エントリー登録・入社準備・稼働開始",
         sections: [{
           title: "入社フローの概要",
           subsections: [
-            { title: "概要", body: "本人の入社意思を確認した後、入社条件と入社日を確定し、総務・人事と連携して必要な手続きを進めます。本人への初日案内と入社確認まで、営業担当が進捗を追跡します。" },
-            { title: "使用ツール", body: '<span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span><span class="tool-tag">freeeサイン</span><span class="tool-tag">SmartHR</span>' },
-            { title: "1. 入社意思と条件を確認する", list: ["本人へ配属先・業務内容・勤務地・勤務条件・給与条件を説明する", "雇用形態・入社可能日・本人の入社意思を確認する", "条件や説明内容に認識違いがないか本人と確認する", "確認結果と未解決事項をSlackで社内共有する"] },
-            { title: "2. 入社情報を確定する", list: ["氏名・連絡先・入社日・配属先を確定する", "雇用形態・給与条件・勤務条件を記録する", "取引先・現場の受け入れ日と研修予定を確認する", "入社情報と担当者をSlackで共有する"] },
-            { title: "3. 総務・人事へ手続きを依頼する", list: ["人事へ雇用契約・社会保険手続きを依頼する", "総務へ必要書類・アカウント・デバイス・入場手続きを依頼する", "各手続きの担当者と期限を決める", "未完了項目を確認し、入社日まで進捗を追跡する"] },
-            { title: "4. 本人へ入社案内を送る", list: ["提出書類と提出期限を案内する", "電子契約・SmartHRの対応方法を案内する", "初日の日時・集合場所・服装・持ち物・連絡先を伝える", "社外連絡はグループLINEで行い、本人の確認を取る"] },
-            { title: "5. 入社初日を確認する", list: ["契約・必要書類・アカウント・入場手続きの完了を確認する", "本人の初日出勤を確認する", "遅刻・欠勤・現場トラブルがあれば担当者へ即時連絡する", "入社完了と今後のフォロー担当をSlackで共有する"] },
-            { title: "営業フェーズの終了条件", body: "本人の入社日と配属先が確定し、必要な手続きと本人への初日案内が完了していること。入社初日の出勤を確認し、稼働後のフォロー担当へ引き継いだ時点で営業フェーズを完了します。" }
+            { title: "概要", body: "面談から採用、エントリーフォーム登録、入社準備、業務委託契約、入社兼稼働開始までを一つの流れで管理します。従業員管理シートと勤務予定表は自動反映を基本とし、シフト入力と契約締結などの手動作業を明確に分けます。" },
+            { title: "全体フロー", body: "面談 → 採用 → エントリーフォーム入力 → 従業員管理シートへ自動反映 → 入社準備 → 勤務予定表への反映・業務委託契約 → 入社兼稼働開始" },
+            { title: "使用ツール", body: '<span class="tool-tag">Googleフォーム</span><span class="tool-tag">Googleスプレッドシート</span><span class="tool-tag">Googleアカウント</span><span class="tool-tag">Googleドライブ</span><span class="tool-tag">住信SBIネット銀行</span><span class="tool-tag">Slack</span><span class="tool-tag">LINEオープンチャット</span><span class="tool-tag">freeeサイン</span>' },
+            { title: "1. 面談", list: ["本人の現状・希望条件・入社可能時期を確認する", "案件内容・勤務条件・業務委託での契約条件を説明する", "面談結果と確認事項を記録する"] },
+            { title: "2. 採用", list: ["採用可否を決定する", "本人へ採用結果と今後の流れを案内する", "入社兼稼働開始の候補日を確認する"] },
+            { title: "3. エントリーフォームを入力する", list: ["採用担当が社用GoogleアカウントでGoogleフォームを開く", "本人の基本情報・連絡先・契約情報を入力する", "入力内容を確認して送信する"] },
+            { title: "4. 従業員管理シートへ自動反映", list: ["Googleフォームの回答が従業員管理シートへ自動反映されたことを確認する", "氏名・連絡先・入社予定日などに不足や誤りがないか確認する", "自動反映されない場合のみ手動で修正する"] },
+            { title: "5. 入社準備", list: ["① 本人へ住信SBIネット銀行の口座開設を案内する", "② 入社者用の社用Googleアカウントを作成する", "③ 案件提案に使用するプロフィールシートを作成する", "④ SlackまたはLINEオープンチャットへ招待し、就業報告の方法を指導する", "⑤ 必要なGoogleドライブを共有する", "⑥ 案件・配属先を確定する"] },
+            { title: "6. 勤務予定表と契約を準備する", list: ["<strong>自動:</strong> 従業員管理シートの情報を勤務予定表へ反映する", "<strong>手動:</strong> シフトを勤務予定表へ入力する", "<strong>手動:</strong> freeeサインで業務委託契約書を送付し、締結を確認する"] },
+            { title: "7. 入社兼稼働開始", list: ["案件・配属先、稼働開始日、初日の集合場所・持ち物を本人へ案内する", "アカウント・共有ドライブ・連絡先・就業報告方法を最終確認する", "本人の初日稼働を確認し、Slackで社内共有する"] },
+            { title: "営業フェーズの終了条件", body: "案件・配属先と稼働開始日が確定し、社用Googleアカウント、管理シート、プロフィールシート、連絡先、共有ドライブ、勤務予定表、業務委託契約の準備が完了していること。本人の入社兼稼働開始を確認した時点で営業フェーズを完了します。" }
           ]
         }],
         crossLinks: [
-          { phase: "phase-hr", phaseTitle: "人事フェーズ", category: "onboard", categoryTitle: "入退職管理", note: "雇用契約・社会保険手続きを連携する" },
+          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "contract", categoryTitle: "契約管理", note: "業務委託契約書の締結状況を連携する" },
           { phase: "phase-office", phaseTitle: "総務フェーズ", category: "onboarding", categoryTitle: "稼働・入場準備", note: "必要書類・クルーコード・入場準備を連携する" },
           { phase: "phase-office", phaseTitle: "総務フェーズ", category: "account", categoryTitle: "アカウント管理", note: "入社時のアカウント発行を依頼する" }
         ]
@@ -1102,6 +1111,7 @@ const data = [
         sections: [{ title: "ツール構成", subsections: [
           { title: "コミュニケーション", body: "社内連絡・情報共有にはSlack、取引先・見込みメンバーなど社外との連絡にはグループLINEを使用します。", list: ["Slack(社内連絡・情報共有・進捗報告)", "グループLINE(社外連絡・取引先・メンバーとの連携)"] },
           { title: "業務管理", list: ["freee会計(経理・請求)", "freeeサイン(電子契約)", "SmartHR(労務・人事)", "Notta(議事録自動化)"] },
+          { title: "入社・稼働管理", list: ["Googleフォーム(エントリー受付)", "Googleスプレッドシート(従業員・勤務予定表)", "Googleアカウント(社用アカウント)", "Googleドライブ(ファイル共有)", "住信SBIネット銀行(口座開設)", "LINEオープンチャット(就業報告)"] },
           { title: "AI・自動化", list: ["ChatGPT", "Claude", "Gemini"] }
         ]}]
       }
