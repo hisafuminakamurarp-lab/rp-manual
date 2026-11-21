@@ -542,6 +542,8 @@ const TOOL_URLS = Object.freeze({
   "Claude": "https://claude.ai/",
   "Gemini": "https://gemini.google.com/",
   "Zoom": "https://zoom.us/signin",
+  "Google Meet": "https://meet.google.com/",
+  "Gmail": "https://mail.google.com/",
   "GitHub": "https://github.com/",
   "Vercel": "https://vercel.com/dashboard",
   "Google Analytics": "https://analytics.google.com/",
@@ -969,6 +971,47 @@ const data = [
         ]}]
       },
       {
+        id: "travel", title: "旅費精算（出張旅費規程）", desc: "出張の日当・宿泊費・交通費のルールと精算の流れ",
+        sections: [{ title: "出張旅費規程", subsections: [
+          { title: "概要", body: "業務で出張したときの日当・宿泊費・交通費は、国内出張旅費規程（2026年7月1日決議）に沿って支給します。金額の計算と書類（出張申請書・出張報告書・旅費精算書）の作成は旅費精算アプリで行います。グループ会社はそれぞれの会社の規程・金額で精算します。" },
+          { title: "対象になる出張", list: [
+            "次の3つすべてに当てはまる移動が対象です",
+            "① ふだんの勤務地の外へ出た",
+            "② 会社の仕事が目的",
+            "③ 交通費などの費用がかかった",
+            "毎週など決まって通っている場所への訪問は、出張扱いにならないことがあります",
+            "私用の予定を含む場合は、私用の分を日当・費用から除きます"
+          ] },
+          { title: "日当・宿泊費の金額", body: "日当と宿泊費の上限は、役職ごとに旅費規程の別表で定めています。金額は管理者に確認してください。" },
+          { title: "日当のルール", list: [
+            "<strong>日帰り:</strong> 出発が7時より前、帰着が20時以降、出発から帰着まで5時間を超える、のどれかに当てはまれば日帰り日当を支給します",
+            "<strong>短時間の日帰り:</strong> 上のどれにも当てはまらない場合、日当はありません",
+            "<strong>宿泊出張:</strong> 出発日から帰着日まで、毎日宿泊日当を支給します（最終日も宿泊日当）",
+            "同じ人が同じ日に、2つの会社から日当を受け取ることはできません"
+          ] },
+          { title: "宿泊費・交通費のルール", list: [
+            "<strong>宿泊費:</strong> 実費を支給します。上限を超えた分は自己負担です",
+            "<strong>親族宅・会社の施設など:</strong> 宿泊費の上限の半額を支給します",
+            "<strong>交通費:</strong> 実費を支給します。領収書または乗車履歴を残してください",
+            "<strong>自家用車:</strong> 走行距離に応じて、旅費規程で定めた1kmあたりの単価で支給します",
+            "<strong>グリーン車・ビジネスクラス等:</strong> 代表取締役・役員のみ利用できます"
+          ] },
+          { title: "精算の流れ", list: [
+            "1. 出張後、行き先・目的・出発と帰着の日時・かかった費用・領収書（写真可）を管理者へ提出する",
+            "2. 管理者が旅費精算アプリに入力する（日当は日時から自動計算）",
+            "3. 旅費精算書PDFを作成し、出張者が内容を確認する",
+            "4. 月末で締め、翌月10日までに精算する",
+            "5. 月度を確定し、会計CSVをfreee会計へ取り込む"
+          ] },
+          { title: "締日・提出期限", body: "月末締め・翌月10日提出です。確定した月の出張は、確定を解除しない限り変更できません。" },
+          { title: "使用ツール", body: '<span class="tool-tag">旅費精算アプリ</span><span class="tool-tag">freee会計</span>' }
+        ]}],
+        crossLinks: [
+          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "expense", categoryTitle: "経費精算", note: "出張以外の立替経費はこちら" },
+          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "tax", categoryTitle: "税務対応", note: "旅費規程・精算書は税務調査で提示する" }
+        ]
+      },
+      {
         id: "year-end", title: "決算", desc: "年次決算・税務申告",
         sections: [{ title: "決算の概要", subsections: [
           { title: "概要", body: "年次決算と税務申告を実施します。税理士と連携。" },
@@ -1110,8 +1153,8 @@ const data = [
         id: "tools", title: "使用ツール一覧", desc: "全社共通ツール構成",
         sections: [{ title: "ツール構成", subsections: [
           { title: "コミュニケーション", body: "社内連絡・情報共有にはSlack、取引先・見込みメンバーなど社外との連絡にはグループLINEを使用します。", list: ["Slack(社内連絡・情報共有・進捗報告)", "グループLINE(社外連絡・取引先・メンバーとの連携)"] },
-          { title: "業務管理", list: ["freee会計(経理・請求)", "freeeサイン(電子契約)", "SmartHR(労務・人事)", "Notta(議事録自動化)"] },
-          { title: "入社・稼働管理", list: ["Googleフォーム(エントリー受付)", "Googleスプレッドシート(従業員・勤務予定表)", "Googleアカウント(社用アカウント)", "Googleドライブ(ファイル共有)", "住信SBIネット銀行(口座開設)", "LINEオープンチャット(就業報告)"] },
+          { title: "業務管理", list: ["freee会計(経理・請求)", "freeeサイン(電子契約)", "SmartHR(労務・人事)", "Notta(議事録自動化)", "Zoom(オンライン会議)"] },
+          { title: "入社・稼働管理", list: ["Googleフォーム(エントリー受付)", "Googleスプレッドシート(従業員・勤務予定表)", "Googleアカウント(社用アカウント)", "Googleドライブ(ファイル共有)", "住信SBIネット銀行(口座開設)", "LINEオープンチャット(就業報告)", "Google Meet(オンライン面談)", "Gmail(社用メール)"] },
           { title: "AI・自動化", list: ["ChatGPT", "Claude", "Gemini"] }
         ]}]
       }
