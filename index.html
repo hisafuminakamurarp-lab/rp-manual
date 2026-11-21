@@ -687,25 +687,6 @@ const data = [
     responsibility: "案件・募集枠の獲得と管理、見込みメンバーの獲得と管理、案件提案、採用決定、エントリー登録、入社準備、業務委託契約、入社兼稼働開始の確認までを担当。",
     categories: [
       {
-        id: "project",
-        title: "案件営業・管理",
-        desc: "toB｜案件獲得・関係構築・募集枠・条件管理",
-        sections: [{
-          title: "案件営業・管理の概要",
-          subsections: [
-            { title: "概要", body: "取引先・現場との関係構築から、通信案件の獲得、募集枠・単価の管理、増枠交渉、終了確認までを一元管理します。ゴールは、メンバーが稼働できる案件・枠を確保することです。" },
-            { title: "使用ツール", body: '<span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' },
-            { title: "案件を新規獲得したとき", list: ["取引先・現場担当者と募集背景を確認する", "キャリア・業務内容・勤務地・開始時期を整理する", "単価・募集人数・必要スキルを確認する", "案件情報と担当者をSlackで社内共有する"] },
-            { title: "案件情報を登録するとき", list: ["取引先・現場・担当者の連絡先を記録する", "募集枠・勤務地・単価・勤務条件を入力する", "稼働開始時期と必要スキルを記録する", "次回確認日・担当者を設定する"] },
-            { title: "募集枠を更新するとき", list: ["現場担当者から最新の募集人数・充足状況を確認する", "増枠余地と追加提案の可否を確認する", "最新の募集状況を記録・共有する", "社内への共有はSlack、社外との確認はグループLINEで行う"] },
-            { title: "単価・条件が変更されたとき", list: ["変更前後の単価・勤務条件・適用開始日を確認する", "提案中のメンバーへの影響を確認する", "変更内容をSlackで社内共有する"] },
-            { title: "案件が終了したとき", list: ["終了日・終了理由・追加募集停止の有無を確認する", "稼働中または提案中のメンバーへの影響を確認する", "終了状況と引き継ぎ内容をSlackで社内共有する"] },
-            { title: "案件の管理項目", list: ["取引先・現場・担当者", "案件種別・キャリア(SB/ドコモ等)", "勤務地・稼働開始時期", "募集人数・充足状況", "単価・勤務条件・必要スキル", "提案状況・配属予定メンバー", "更新時期・増枠余地・終了予定"] },
-            { title: "案件のライフサイクル", list: ["発掘 → 案件獲得 → 条件確認 → 募集 → 提案 → 更新・増枠 → 終了"] }
-          ]
-        }]
-      },
-      {
         id: "member",
         title: "人材営業・管理",
         desc: "toC｜紹介・見込みメンバー・面談・進捗管理",
@@ -1664,8 +1645,12 @@ function routeFromHash() {
       return true;
     }
     if (parts[0] === "phase-sales") {
+      /* 案件営業・管理(project)は廃止。旧リンクは営業フェーズのトップへ */
+      if (parts[1] === "project" || parts[1] === "customer") {
+        showPhase("phase-sales");
+        return true;
+      }
       const legacySalesRoutes = {
-        customer: { phase: "phase-sales", category: "project" },
         marketing: { phase: "phase-sales", category: "member" },
         lead: { phase: "phase-sales", category: "member" },
         activity: { phase: "phase-sales", category: "member" },
