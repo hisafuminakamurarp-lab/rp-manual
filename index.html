@@ -622,8 +622,8 @@ const data = [
     categories: [
       {
         id: "purpose",
-        title: "本マニュアルの目的",
-        desc: "目的・対象範囲・更新ルール",
+        title: "本マニュアルの目的と全体像",
+        desc: "目的・対象範囲・更新ルール・6フェーズの全体像",
         sections: [
           {
             title: "本マニュアルについて",
@@ -651,16 +651,9 @@ const data = [
                 body: "本マニュアルは運用変更・ツール変更・組織変更が発生した時点で速やかに更新します。"
               }
             ]
-          }
-        ]
-      },
-      {
-        id: "company-os",
-        title: "会社OS全体像",
-        desc: "6フェーズの相関図",
-        sections: [
+          },
           {
-            title: "フェーズ構造",
+            title: "会社OS全体像（6つのフェーズ）",
             subsections: [
               {
                 title: "6つのフェーズ",
@@ -1633,7 +1626,7 @@ function routeFromHash() {
     const phase = data.find(d => d.id === parts[0]);
     if (phase) { showPhase(parts[0]); return true; }
   } else if (parts.length >= 2) {
-    if (parts[0] === "overview" && parts[1] === "manual-update") {
+    if (parts[0] === "overview" && (parts[1] === "manual-update" || parts[1] === "company-os")) {
       showPhase("overview");
       return true;
     }
