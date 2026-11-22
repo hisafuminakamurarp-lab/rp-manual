@@ -259,6 +259,10 @@
   .section-block p { margin-bottom: 10px; color: #3a4a5a; }
   .section-block ul { padding-left: 22px; margin-bottom: 12px; }
   .section-block li { margin-bottom: 4px; color: #3a4a5a; }
+  .manual-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin: 4px 0 16px; }
+  .manual-shot { margin: 0; }
+  .manual-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--rp-border); border-radius: 8px; background: var(--rp-snow-pure); }
+  .manual-shot figcaption { font-size: 12px; color: var(--rp-text-mute); margin-top: 4px; }
 
   .phase-overview {
     background: linear-gradient(135deg, var(--rp-rock) 0%, var(--rp-rock-light) 100%);
@@ -988,7 +992,7 @@ const data = [
           { title: "締日・提出期限", body: "月末締め・翌月10日提出です。確定した月の出張は、確定を解除しない限り変更できません。" },
           { title: "使用ツール", body: '<span class="tool-tag">旅費精算アプリ</span><span class="tool-tag">freee会計</span>' }
         ]}, { title: "旅費精算アプリの使い方", subsections: [
-          { title: "アプリの概要", body: "旅費精算アプリ（RPG Travel OS）は、出張の申請・報告・精算を1つの画面で行う社内アプリです。入力した出張を旅費規程で自動判定し、出張申請書・出張報告書・旅費精算書のPDFを作成します。入力は管理者が行います。" },
+          { title: "アプリの概要", body: "旅費精算アプリ（RPG Travel OS）は、出張の申請・報告・精算を1つの画面で行う社内アプリです。入力した出張を旅費規程で自動判定し、出張申請書・出張報告書・旅費精算書のPDFを作成します。入力は管理者が行います。<br>※画面写真はサンプルデータで、金額はぼかしています。" },
           { title: "開き方", list: [
             "管理者のMacで Chrome から <a href=\"http://localhost:8765/\" target=\"_blank\" rel=\"noopener noreferrer\">旅費精算アプリ（http://localhost:8765/）</a> を開く（Macにログインすると自動で起動します）",
             "Touch IDでログインする",
@@ -1000,11 +1004,18 @@ const data = [
             "3. 経路の計算や日ごとの行き先・交通費の内訳は、必要なときだけ「詳しく入力する（任意）」で入力する",
             "4.「保存する」を押し、支給予定額を確認する",
             "5.「書類（PDF）」から出張申請書・出張報告書・旅費精算書を出力する"
+          ], images: [
+            { src: "images/travel-app/01-input-who-when.jpg", caption: "① だれが・いつ" },
+            { src: "images/travel-app/02-input-where-cost.jpg", caption: "② どこへ・何をしに／かかった費用" },
+            { src: "images/travel-app/03-input-receipt-save.jpg", caption: "③ 領収書・報告 →「保存する」" },
+            { src: "images/travel-app/04-amount-pdf.jpg", caption: "④ 保存後：支給予定額と書類（PDF）" }
           ] },
           { title: "月末の操作", list: [
             "1.「台帳」でその月の出張に漏れ・誤りがないか確認する",
             "2.「月度を確定」を押す",
             "3.「月次精算書」と「会計CSV」を出力し、会計CSVをfreee会計に取り込む"
+          ], images: [
+            { src: "images/travel-app/05-ledger.jpg", caption: "台帳：上のボタンで月度確定・月次精算書・会計CSV" }
           ] },
           { title: "管理者の設定", list: [
             "「設定（管理者用）」で、役職ごとの日当・宿泊費の上限や計算ルールを変更できる（変更履歴は自動で残る）",
@@ -1569,6 +1580,13 @@ function showCategory(phaseId, categoryId) {
           html += "<ul>";
           sub.list.forEach(item => { html += `<li>${linkToolListItem(item)}</li>`; });
           html += "</ul>";
+        }
+        if (sub.images) {
+          html += `<div class="manual-shots">`;
+          sub.images.forEach(img => {
+            html += `<figure class="manual-shot"><a href="${escapeHtml(img.src)}" target="_blank" rel="noopener noreferrer"><img src="${escapeHtml(img.src)}" alt="${escapeHtml(img.alt || img.caption || "")}" loading="lazy"></a>${img.caption ? `<figcaption>${escapeHtml(img.caption)}</figcaption>` : ""}</figure>`;
+          });
+          html += `</div>`;
         }
       });
     }
