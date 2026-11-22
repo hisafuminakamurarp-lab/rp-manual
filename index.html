@@ -813,21 +813,51 @@ const data = [
     id: "phase-accounting",
     title: "3. 経理フェーズ",
     description: "請求・決済・会計処理・決算・予実管理を行う数字管理フェーズ",
-    responsibility: "数字の管理。請求書の発行と決済・サブスクの管理、日々の会計処理から月次決算、年次決算、予実管理、税務対応までを担当。",
+    responsibility: "数字の管理。freee会計を中心に、日々の会計処理・請求・債権債務・経費精算・月次決算・年次決算を行い、決済・サブスクの管理、予実管理、旅費精算、税務対応までを担当。",
     categories: [
       {
-        id: "cash", title: "現預金管理", desc: "口座・現金残高管理",
-        sections: [{ title: "現預金管理の概要", subsections: [
+        id: "freee", title: "freee会計", desc: "仕訳・口座・カード・請求・債権債務・経費・固定資産・月次締め・決算",
+        sections: [{ title: "freee会計でやること", subsections: [
+          { title: "概要", body: "日々の仕訳、口座・カードの明細取込、請求書の発行、売掛・買掛の管理、経費精算、固定資産、月次締め、年次決算は、freee会計にまとめて行います。銀行口座とクレジットカードは連携して自動で取り込みます。下にある各項目は、freee会計の中でやる作業ごとにまとめたものです。" },
+          { title: "使用ツール", body: '<span class="tool-tag">freee会計</span><span class="tool-tag">Slack</span>' }
+        ]}, { title: "会計処理", subsections: [
+          { title: "概要", body: "日々の取引を仕訳としてfreee会計に登録します。銀行・クレカは自動取込を活用。" },
+          { title: "主な業務", list: ["仕訳登録(freee会計)", "勘定科目の整備", "経費計上", "月次残高照合"] }
+        ]}, { title: "現預金管理", subsections: [
           { title: "概要", body: "銀行口座・現金残高を日次〜週次で管理します。freee会計と銀行口座を連携し、自動取込を活用。" },
           { title: "管理項目", list: ["口座残高(各銀行口座)", "入出金履歴", "資金繰り予測", "月末残高照合"] }
-        ]}]
-      },
-      {
-        id: "credit-card", title: "クレカ管理", desc: "法人カード・利用明細管理",
-        sections: [{ title: "クレカ管理の概要", subsections: [
+        ]}, { title: "クレカ管理", subsections: [
           { title: "概要", body: "法人クレジットカードの利用状況・明細・支払を管理します。" },
           { title: "管理項目", list: ["カード保有者一覧", "月次利用明細(freee会計連携)", "経費精算との突合", "限度額・更新管理"] }
-        ]}]
+        ]}, {
+          title: "請求発注",
+          subsections: [
+            { title: "概要", body: "請求書の発行と発注書の管理を行います。請求書はfreee会計から発行し、入金確認後に経理フェーズの会計処理へ。" },
+            { title: "主な業務", list: ["請求書作成・発行(freee会計)", "発注書発行・管理", "入金予定管理", "未回収のリマインド対応"] }
+          ]
+        }, { title: "債権管理", subsections: [
+          { title: "概要", body: "売掛金・未収金・入金予定を管理します。長期未回収の早期検知。" },
+          { title: "管理項目", list: ["売掛金台帳", "入金予定リスト(月次)", "入金消込", "長期未回収のフォロー"] }
+        ]}, { title: "債務管理", subsections: [
+          { title: "概要", body: "買掛金・未払金・支払予定を管理します。支払期日漏れを防止します。" },
+          { title: "管理項目", list: ["買掛金台帳", "支払予定リスト(月次)", "支払実行・消込", "支払サイト管理"] }
+        ]}, { title: "経費精算", subsections: [
+          { title: "概要", body: "従業員の立替経費を月次精算します。電子帳簿保存法に対応。" },
+          { title: "運用フロー", list: ["経費申請(freee経費)", "管理者承認", "精算実行(給与と合算)", "領収書のデジタル保管"] }
+        ]}, { title: "固定資産管理", subsections: [
+          { title: "概要", body: "10万円以上の固定資産を台帳管理し、減価償却を適切に処理します。" },
+          { title: "管理項目", list: ["資産台帳(取得日/取得価額/耐用年数)", "減価償却処理", "除却・売却処理", "年次棚卸"] }
+        ]}, { title: "月次決算", subsections: [
+          { title: "概要", body: "月次締めは翌月10営業日以内に完了。試算表・PL/BSを管理者へ報告。" },
+          { title: "主な業務", list: ["月末仕訳(経過勘定・引当金)", "残高照合", "試算表作成", "月次報告書作成"] }
+        ]}, { title: "決算", subsections: [
+          { title: "概要", body: "年次決算もfreee会計の中（freee決算）で行います。税理士と連携して進めます。" },
+          { title: "主な業務", list: ["年次決算仕訳", "決算書作成(BS/PL/CF)", "法人税・消費税申告", "監査対応"] }
+        ]}],
+        crossLinks: [
+          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "travel", categoryTitle: "旅費精算（出張旅費規程）", note: "出張の精算は旅費精算アプリで行い、会計CSVをfreee会計へ取り込む" },
+          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "tax", categoryTitle: "税務対応", note: "税理士との連携・税務調査対応はこちら" }
+        ]
       },
       {
         id: "payment-system",
@@ -842,71 +872,10 @@ const data = [
         }]
       },
       {
-        id: "fixed-asset", title: "固定資産管理", desc: "資産台帳・減価償却",
-        sections: [{ title: "固定資産管理の概要", subsections: [
-          { title: "概要", body: "10万円以上の固定資産を台帳管理し、減価償却を適切に処理します。" },
-          { title: "管理項目", list: ["資産台帳(取得日/取得価額/耐用年数)", "減価償却処理", "除却・売却処理", "年次棚卸"] }
-        ]}]
-      },
-      {
-        id: "ap", title: "債務管理", desc: "買掛・未払金管理",
-        sections: [{ title: "債務管理の概要", subsections: [
-          { title: "概要", body: "買掛金・未払金・支払予定を管理します。支払期日漏れを防止します。" },
-          { title: "管理項目", list: ["買掛金台帳", "支払予定リスト(月次)", "支払実行・消込", "支払サイト管理"] }
-        ]}]
-      },
-      {
-        id: "billing",
-        title: "請求発注",
-        desc: "請求書発行・発注書管理",
-        sections: [{
-          title: "請求発注の概要",
-          subsections: [
-            { title: "概要", body: "請求書の発行と発注書の管理を行います。請求書はfreee会計から発行し、入金確認後に経理フェーズの会計処理へ。" },
-            { title: "主な業務", list: ["請求書作成・発行(freee会計)", "発注書発行・管理", "入金予定管理", "未回収のリマインド対応"] }
-          ]
-        }],
-        crossLinks: [
-          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "ar", categoryTitle: "債権管理", note: "入金確認・売掛管理へ連携" }
-        ]
-      },
-      {
-        id: "ar", title: "債権管理", desc: "売掛・未収金管理",
-        sections: [{ title: "債権管理の概要", subsections: [
-          { title: "概要", body: "売掛金・未収金・入金予定を管理します。長期未回収の早期検知。" },
-          { title: "管理項目", list: ["売掛金台帳", "入金予定リスト(月次)", "入金消込", "長期未回収のフォロー"] }
-        ]}],
-        crossLinks: [
-          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "billing", categoryTitle: "請求発注", note: "請求書発行から債権管理へ連携" }
-        ]
-      },
-      {
-        id: "accounting", title: "会計処理", desc: "日々の仕訳登録",
-        sections: [{ title: "会計処理の概要", subsections: [
-          { title: "概要", body: "日々の取引を仕訳としてfreee会計に登録します。銀行・クレカは自動取込を活用。" },
-          { title: "主な業務", list: ["仕訳登録(freee会計)", "勘定科目の整備", "経費計上", "月次残高照合"] },
-          { title: "使用ツール", body: '<span class="tool-tag">freee会計</span><span class="tool-tag">Slack</span>' }
-        ]}]
-      },
-      {
-        id: "monthly-close", title: "月次決算", desc: "月次締め・試算表作成",
-        sections: [{ title: "月次決算の概要", subsections: [
-          { title: "概要", body: "月次締めは翌月10営業日以内に完了。試算表・PL/BSを管理者へ報告。" },
-          { title: "主な業務", list: ["月末仕訳(経過勘定・引当金)", "残高照合", "試算表作成", "月次報告書作成"] }
-        ]}]
-      },
-      {
         id: "budget", title: "予実管理", desc: "予算と実績の差異分析",
         sections: [{ title: "予実管理の概要", subsections: [
           { title: "概要", body: "予算と実績の差異を毎月分析し、経営判断材料を提供します。" },
           { title: "管理項目", list: ["予算策定(年初)", "月次予実比較", "差異要因分析", "次月以降の見通し更新"] }
-        ]}]
-      },
-      {
-        id: "expense", title: "経費精算", desc: "立替経費の精算",
-        sections: [{ title: "経費精算の概要", subsections: [
-          { title: "概要", body: "従業員の立替経費を月次精算します。電子帳簿保存法に対応。" },
-          { title: "運用フロー", list: ["経費申請(freee経費)", "管理者承認", "精算実行(給与と合算)", "領収書のデジタル保管"] }
         ]}]
       },
       {
@@ -983,16 +952,9 @@ const data = [
           ] }
         ]}],
         crossLinks: [
-          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "expense", categoryTitle: "経費精算", note: "出張以外の立替経費はこちら" },
+          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "freee", categoryTitle: "freee会計", note: "出張以外の立替経費（経費精算）はこちら" },
           { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "tax", categoryTitle: "税務対応", note: "旅費規程・精算書は税務調査で提示する" }
         ]
-      },
-      {
-        id: "year-end", title: "決算", desc: "年次決算・税務申告",
-        sections: [{ title: "決算の概要", subsections: [
-          { title: "概要", body: "年次決算と税務申告を実施します。税理士と連携。" },
-          { title: "主な業務", list: ["年次決算仕訳", "決算書作成(BS/PL/CF)", "法人税・消費税申告", "監査対応"] }
-        ]}]
       },
       {
         id: "tax", title: "税務対応", desc: "税理士連携・税務調査対応",
@@ -1701,6 +1663,11 @@ function routeFromHash() {
     }
     if (parts[0] === "phase-common" && ["ai-rule", "meeting", "security", "roadmap"].includes(parts[1])) {
       showCategory("phase-common", "tools");
+      return true;
+    }
+    /* freee会計にまとめた旧カテゴリへのリンクは freee会計 へ */
+    if (["cash", "credit-card", "fixed-asset", "ap", "billing", "ar", "accounting", "monthly-close", "expense", "year-end"].includes(parts[1])) {
+      showCategory("phase-accounting", "freee");
       return true;
     }
     /* カテゴリを別フェーズへ移した場合、旧リンクは今のフェーズへ転送 */
