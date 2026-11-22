@@ -667,16 +667,16 @@ const data = [
                 body: "ROCK PTARMIGANの業務は以下6フェーズで構成されます。各フェーズは独立した責任範囲を持ちながら、相互に連携します。",
                 list: [
                   "<strong>1. 営業フェーズ</strong> ─ 人材を確保し、案件提案から入社まで進める",
-                  "<strong>2. 総務フェーズ</strong> ─ 業務を回す(契約・請求・アカウント)",
-                  "<strong>3. 経理フェーズ</strong> ─ 数字を管理する(会計・決算・予実)",
+                  "<strong>2. 総務フェーズ</strong> ─ 業務を回す(アカウント・デバイス・発注)",
+                  "<strong>3. 経理フェーズ</strong> ─ 数字を管理する(請求・会計・決算・予実)",
                   "<strong>4. 人事フェーズ</strong> ─ 人を支える(採用・労務・給与)",
-                  "<strong>5. 法務フェーズ</strong> ─ リスクを守る(契約審査・コンプラ)",
+                  "<strong>5. 法務フェーズ</strong> ─ リスクを守る(契約管理・契約審査・コンプラ)",
                   "<strong>6. 共通基盤</strong> ─ 全社で使用するツールを整理する"
                 ]
               },
               {
                 title: "業務連携の流れ",
-                body: "営業が人材を獲得し、案件提案から入社までを進行 → 総務が契約・稼働開始・請求 → 経理が入金処理・会計 → 法務が契約リスクを継続監視。人事と共通基盤は全フェーズを横断的に支えます。"
+                body: "営業が人材を獲得し、案件提案から入社までを進行 → 法務が契約を締結 → 総務がアカウント・デバイスを用意 → 経理が請求・入金処理・会計 → 法務が契約リスクを継続監視。人事と共通基盤は全フェーズを横断的に支えます。"
               }
             ]
           }
@@ -737,8 +737,7 @@ const data = [
           ]
         }],
         crossLinks: [
-          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "contract", categoryTitle: "契約管理", note: "業務委託契約書の締結状況を連携する" },
-          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "onboarding", categoryTitle: "稼働・入場準備", note: "必要書類・クルーコード・入場準備を連携する" },
+          { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "contract", categoryTitle: "契約管理", note: "業務委託契約書の締結状況を連携する" },
           { phase: "phase-office", phaseTitle: "総務フェーズ", category: "account", categoryTitle: "アカウント管理", note: "入社時のアカウント発行を依頼する" }
         ]
       }
@@ -748,70 +747,9 @@ const data = [
   {
     id: "phase-office",
     title: "2. 総務フェーズ",
-    description: "契約・稼働準備・請求・アカウント・発注など業務運用の中核フェーズ",
-    responsibility: "営業の入社フローから必要情報を引き継ぎ、契約締結、必要書類、クルーコード取得、入場・稼働開始準備、請求発行、アカウント・デバイス管理、Web運用を担当。",
+    description: "アカウント・デバイス・発注・Webなど業務運用を支えるフェーズ",
+    responsibility: "営業の入社フローから必要情報を引き継ぎ、アカウント・デバイス管理、備品・サービスの発注、Web運用を担当。",
     categories: [
-      {
-        id: "contract",
-        title: "契約管理",
-        desc: "契約締結・更新・台帳管理",
-        sections: [{
-          title: "契約管理の概要",
-          subsections: [
-            { title: "概要", body: "契約内容・締結状況・更新状況を管理します。全契約は電子契約(freeeサイン)を原則とし、原本を所定の保管場所に保存して契約台帳で管理します。" },
-            { title: "主な業務", list: ["契約書作成(所定のテンプレートを使用)", "契約内容確認(法務フェーズと連携)", "電子契約送付(freeeサイン)", "締結確認・契約台帳への登録", "契約更新管理(更新3ヶ月前にリマインド)"] },
-            { title: "使用ツール", body: '<span class="tool-tag">freeeサイン</span><span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' }
-          ]
-        }],
-        crossLinks: [
-          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "joining", categoryTitle: "入社フロー", note: "入社条件確定後に契約管理へ連携する" },
-          { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "contract-risk", categoryTitle: "契約リスク管理", note: "契約条項の法的妥当性確認" }
-        ]
-      },
-      {
-        id: "onboarding",
-        title: "稼働・入場準備",
-        desc: "必要書類・クルーコード・入場手続き・稼働開始準備",
-        sections: [{
-          title: "稼働・入場準備の概要",
-          subsections: [
-            { title: "概要", body: "営業フェーズで入社日・配属先が確定した案件・メンバーを引き継ぎ、契約条件の確認、必要書類の回収、クルーコード等の手続き、入場準備、稼働初日の案内を担当します。" },
-            { title: "使用ツール", body: '<span class="tool-tag">freeeサイン</span><span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' },
-            { title: "入社・配属確定後の対応", list: ["営業から案件・メンバー・入社日・稼働開始日の確定情報を受け取る", "取引先・本人との契約締結状況を確認する", "必要書類(身分証/口座情報/各種同意書)を回収する", "クルーコード・入場申請など現場固有の手続きを行う", "研修日程・初日の集合場所・持ち物・連絡手段を案内する", "緊急連絡先・フォロー担当を確定する", "稼働開始の可否と準備完了を営業へ共有する"] }
-          ]
-        }],
-        crossLinks: [
-          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "joining", categoryTitle: "入社フロー", note: "入社日・配属先の確定情報を受け取る" },
-          { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "legal-check", categoryTitle: "リーガルチェック", note: "契約条件・入場要件を確認する" }
-        ]
-      },
-      {
-        id: "e-contract",
-        title: "電子契約",
-        desc: "freeeサインでの電子契約運用",
-        sections: [{
-          title: "電子契約の概要",
-          subsections: [
-            { title: "概要", body: "freeeサインを利用した電子契約の標準フローを定めます。書面契約は原則禁止とし、例外は管理者承認を必須とします。" },
-            { title: "運用フロー", list: ["テンプレート選択 → 契約内容入力", "freeeサインで送付(担当者→契約相手)", "相手方の電子署名取得", "締結後PDFを所定の保管場所に保存", "契約台帳に登録"] }
-          ]
-        }]
-      },
-      {
-        id: "billing",
-        title: "請求発注",
-        desc: "請求書発行・発注書管理",
-        sections: [{
-          title: "請求発注の概要",
-          subsections: [
-            { title: "概要", body: "請求書の発行と発注書の管理を行います。請求書はfreee会計から発行し、入金確認後に経理フェーズの会計処理へ。" },
-            { title: "主な業務", list: ["請求書作成・発行(freee会計)", "発注書発行・管理", "入金予定管理", "未回収のリマインド対応"] }
-          ]
-        }],
-        crossLinks: [
-          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "ar", categoryTitle: "債権管理", note: "入金確認・売掛管理へ連携" }
-        ]
-      },
       {
         id: "account",
         title: "アカウント管理",
@@ -853,18 +791,6 @@ const data = [
         }]
       },
       {
-        id: "payment-system",
-        title: "決済システム管理",
-        desc: "クレジット決済・サブスク管理",
-        sections: [{
-          title: "決済システム管理の概要",
-          subsections: [
-            { title: "概要", body: "BtoC向け決済システム・社内利用のサブスクリプションサービスを管理します。" },
-            { title: "管理項目", list: ["決済プロバイダー設定", "サブスク一覧(契約期間・更新日)", "解約・プラン変更管理", "支払方法の集約"] }
-          ]
-        }]
-      },
-      {
         id: "web",
         title: "Web管理",
         desc: "LP・サイト・SEO・分析",
@@ -886,8 +812,8 @@ const data = [
   {
     id: "phase-accounting",
     title: "3. 経理フェーズ",
-    description: "会計処理・決算・予実管理を行う数字管理フェーズ",
-    responsibility: "数字の管理。日々の会計処理から月次決算、年次決算、予実管理、税務対応までを担当。",
+    description: "請求・決済・会計処理・決算・予実管理を行う数字管理フェーズ",
+    responsibility: "数字の管理。請求書の発行と決済・サブスクの管理、日々の会計処理から月次決算、年次決算、予実管理、税務対応までを担当。",
     categories: [
       {
         id: "cash", title: "現預金管理", desc: "口座・現金残高管理",
@@ -904,6 +830,18 @@ const data = [
         ]}]
       },
       {
+        id: "payment-system",
+        title: "決済システム管理",
+        desc: "クレジット決済・サブスク管理",
+        sections: [{
+          title: "決済システム管理の概要",
+          subsections: [
+            { title: "概要", body: "BtoC向け決済システム・社内利用のサブスクリプションサービスを管理します。" },
+            { title: "管理項目", list: ["決済プロバイダー設定", "サブスク一覧(契約期間・更新日)", "解約・プラン変更管理", "支払方法の集約"] }
+          ]
+        }]
+      },
+      {
         id: "fixed-asset", title: "固定資産管理", desc: "資産台帳・減価償却",
         sections: [{ title: "固定資産管理の概要", subsections: [
           { title: "概要", body: "10万円以上の固定資産を台帳管理し、減価償却を適切に処理します。" },
@@ -918,13 +856,28 @@ const data = [
         ]}]
       },
       {
+        id: "billing",
+        title: "請求発注",
+        desc: "請求書発行・発注書管理",
+        sections: [{
+          title: "請求発注の概要",
+          subsections: [
+            { title: "概要", body: "請求書の発行と発注書の管理を行います。請求書はfreee会計から発行し、入金確認後に経理フェーズの会計処理へ。" },
+            { title: "主な業務", list: ["請求書作成・発行(freee会計)", "発注書発行・管理", "入金予定管理", "未回収のリマインド対応"] }
+          ]
+        }],
+        crossLinks: [
+          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "ar", categoryTitle: "債権管理", note: "入金確認・売掛管理へ連携" }
+        ]
+      },
+      {
         id: "ar", title: "債権管理", desc: "売掛・未収金管理",
         sections: [{ title: "債権管理の概要", subsections: [
           { title: "概要", body: "売掛金・未収金・入金予定を管理します。長期未回収の早期検知。" },
           { title: "管理項目", list: ["売掛金台帳", "入金予定リスト(月次)", "入金消込", "長期未回収のフォロー"] }
         ]}],
         crossLinks: [
-          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "billing", categoryTitle: "請求発注", note: "請求書発行から債権管理へ連携" }
+          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "billing", categoryTitle: "請求発注", note: "請求書発行から債権管理へ連携" }
         ]
       },
       {
@@ -1125,8 +1078,8 @@ const data = [
   {
     id: "phase-legal",
     title: "5. 法務フェーズ",
-    description: "リーガルチェック・コンプライアンス・契約リスクを守るフェーズ",
-    responsibility: "法的リスクの管理。契約書の法的審査、コンプライアンス、契約リスクの継続管理を担当。",
+    description: "リーガルチェック・契約管理・コンプライアンス・契約リスクを守るフェーズ",
+    responsibility: "法的リスクの管理。契約書の法的審査、契約の締結（電子契約）と台帳管理、コンプライアンス、契約リスクの継続管理を担当。",
     categories: [
       {
         id: "legal-check", title: "リーガルチェック", desc: "契約書・規約の法的審査",
@@ -1135,9 +1088,37 @@ const data = [
           { title: "チェック項目", list: ["契約条項の妥当性", "リスク条項の有無", "個人情報保護法対応", "知的財産権の取り扱い", "解約条項・損害賠償条項"] }
         ]}],
         crossLinks: [
-          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "onboarding", categoryTitle: "稼働・入場準備", note: "契約・稼働開始前の条件審査" },
-          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "contract", categoryTitle: "契約管理", note: "契約締結前審査" }
+          { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "contract", categoryTitle: "契約管理", note: "契約締結前審査" }
         ]
+      },
+      {
+        id: "contract",
+        title: "契約管理",
+        desc: "契約締結・更新・台帳管理",
+        sections: [{
+          title: "契約管理の概要",
+          subsections: [
+            { title: "概要", body: "契約内容・締結状況・更新状況を管理します。全契約は電子契約(freeeサイン)を原則とし、原本を所定の保管場所に保存して契約台帳で管理します。" },
+            { title: "主な業務", list: ["契約書作成(所定のテンプレートを使用)", "契約内容確認(法務フェーズと連携)", "電子契約送付(freeeサイン)", "締結確認・契約台帳への登録", "契約更新管理(更新3ヶ月前にリマインド)"] },
+            { title: "使用ツール", body: '<span class="tool-tag">freeeサイン</span><span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' }
+          ]
+        }],
+        crossLinks: [
+          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "joining", categoryTitle: "入社フロー", note: "入社条件確定後に契約管理へ連携する" },
+          { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "contract-risk", categoryTitle: "契約リスク管理", note: "契約条項の法的妥当性確認" }
+        ]
+      },
+      {
+        id: "e-contract",
+        title: "電子契約",
+        desc: "freeeサインでの電子契約運用",
+        sections: [{
+          title: "電子契約の概要",
+          subsections: [
+            { title: "概要", body: "freeeサインを利用した電子契約の標準フローを定めます。書面契約は原則禁止とし、例外は管理者承認を必須とします。" },
+            { title: "運用フロー", list: ["テンプレート選択 → 契約内容入力", "freeeサインで送付(担当者→契約相手)", "相手方の電子署名取得", "締結後PDFを所定の保管場所に保存", "契約台帳に登録"] }
+          ]
+        }]
       },
       {
         id: "compliance", title: "コンプライアンス", desc: "法令順守・社内規程運用",
@@ -1153,7 +1134,7 @@ const data = [
           { title: "監視項目", list: ["契約違反の早期検知", "更新時の条件見直し", "紛争予防対応", "契約終了時の手続き"] }
         ]}],
         crossLinks: [
-          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "contract", categoryTitle: "契約管理", note: "契約台帳の継続監視" }
+          { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "contract", categoryTitle: "契約管理", note: "契約台帳の継続監視" }
         ]
       },
       {
@@ -1705,7 +1686,7 @@ function routeFromHash() {
         activity: { phase: "phase-sales", category: "member" },
         deal: { phase: "phase-sales", category: "joining" },
         matching: { phase: "phase-sales", category: "joining" },
-        "order-check": { phase: "phase-office", category: "onboarding" }
+        "order-check": { phase: "phase-sales", category: "joining" }
       };
       const legacyRoute = legacySalesRoutes[parts[1]];
       if (legacyRoute) {
@@ -1713,8 +1694,19 @@ function routeFromHash() {
         return true;
       }
     }
+    /* 稼働・入場準備(onboarding)は廃止。旧リンクは営業フェーズの入社フローへ */
+    if (parts[0] === "phase-office" && parts[1] === "onboarding") {
+      showCategory("phase-sales", "joining");
+      return true;
+    }
     if (parts[0] === "phase-common" && ["ai-rule", "meeting", "security", "roadmap"].includes(parts[1])) {
       showCategory("phase-common", "tools");
+      return true;
+    }
+    /* カテゴリを別フェーズへ移した場合、旧リンクは今のフェーズへ転送 */
+    const ownerPhase = data.find(d => d.categories && d.categories.some(c => c.id === parts[1]));
+    if (ownerPhase && ownerPhase.id !== parts[0]) {
+      showCategory(ownerPhase.id, parts[1]);
       return true;
     }
     showCategory(parts[0], parts[1]);
