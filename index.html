@@ -273,6 +273,7 @@
   .section-block li { margin-bottom: 4px; color: #3a4a5a; }
   .manual-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin: 4px 0 16px; }
   .manual-shot { margin: 0; }
+  .section-block li ul { margin: 6px 0 2px; }
   .manual-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--rp-border); border-radius: 8px; background: var(--rp-snow-pure); }
   .manual-shot figcaption { font-size: 12px; color: var(--rp-text-mute); margin-top: 4px; }
 
@@ -736,15 +737,23 @@ const data = [
           { id: "itaku", title: "業務委託案件", desc: "RPと業務委託契約を結ぶ（freeeサイン）", sections: [{
             title: "入社フロー（業務委託案件）",
             subsections: [
-              { title: "概要", body: "RPが本人と業務委託契約を結ぶ案件の入社フローです。従業員管理シートと勤務予定表は自動反映を基本とし、シフト入力と契約締結などの手動作業を明確に分けます。" },
-              { title: "全体フロー", body: "面談 → 採用 → エントリーフォーム入力 → 従業員管理シートへ自動反映 → 入社準備 → 勤務予定表への反映・業務委託契約 → 入社兼稼働開始" },
-              { title: "使用ツール", body: '<span class="tool-tag">Googleフォーム</span><span class="tool-tag">Googleスプレッドシート</span><span class="tool-tag">Googleアカウント</span><span class="tool-tag">Googleドライブ</span><span class="tool-tag">住信SBIネット銀行</span><span class="tool-tag">Slack</span><span class="tool-tag">グループLINE</span><span class="tool-tag">freeeサイン</span><span class="tool-tag">Gmail</span><span class="tool-tag">Google Meet</span>' },
-              { title: "1. エントリーフォームを入力する", list: ["採用担当が社用GoogleアカウントでGoogleフォームを開く", "本人の基本情報・連絡先・契約情報を入力する", "入力内容を確認して送信する"] },
-              { title: "2. 従業員管理シートへ自動反映", list: ["Googleフォームの回答が従業員管理シートへ自動反映されたことを確認する", "氏名・連絡先・入社予定日などに不足や誤りがないか確認する", "自動反映されない場合のみ手動で修正する"] },
-              { title: "3. 入社準備", list: ["① 本人へ住信SBIネット銀行の口座開設を案内する", "② 入社者用の社用Googleアカウントを作成する", "③ 案件提案に使用するプロフィールシートを作成する", "④ SlackまたはグループLINEへ招待し、就業報告の方法を指導する", "⑤ 必要なGoogleドライブを共有する", "⑥ 案件・配属先を確定する"] },
-              { title: "4. 勤務予定表と契約を準備する", list: ["<strong>自動:</strong> 従業員管理シートの情報を勤務予定表へ反映する", "<strong>手動:</strong> シフトを勤務予定表へ入力する", "<strong>手動:</strong> freeeサインで業務委託契約書を送付し、締結を確認する"] },
-              { title: "5. 入社兼稼働開始", list: ["案件・配属先、稼働開始日、初日の集合場所・持ち物を本人へ案内する", "アカウント・共有ドライブ・連絡先・就業報告方法を最終確認する", "本人の初日稼働を確認し、Slackで社内共有する"] },
-              { title: "営業フェーズの終了条件", body: "案件・配属先と稼働開始日が確定し、社用Googleアカウント、管理シート、プロフィールシート、連絡先、共有ドライブ、勤務予定表、業務委託契約の準備が完了していること。本人の入社兼稼働開始を確認した時点で営業フェーズを完了します。" }
+              { title: "概要", body: "RPが本人と業務委託契約を結ぶ案件の入社フローです。従業員データマスタと各スプレッドシートは自動反映を基本とし、契約・案件選定・稼働準備などの手動作業を明確に分けます。" },
+              { title: "全体フロー", body: "入社準備 → エントリーフォームの入力 → 従業員データマスタへ自動反映 → 各スプレッドシートの自動反映 → 契約管理 → 案件選定 → 稼働準備 → 稼働開始" },
+              { title: "使用ツール", body: '<span class="tool-tag">Googleアカウント</span><span class="tool-tag">Googleフォーム</span><span class="tool-tag">Googleスプレッドシート</span><span class="tool-tag">freeeサイン</span><span class="tool-tag">Slack</span>' },
+              { title: "1. 入社準備", list: [
+                '社用Googleアカウントを作成する（<a href="https://www.google.com/intl/ja/account/about/" target="_blank" rel="noopener noreferrer">Googleアカウントの作成ページ</a>）',
+                '開業届等の提出の対応をする<ul><li><a href="files/kaigyo/kaigyo-todokede.pdf" target="_blank" rel="noopener noreferrer">個人事業の開業・廃業等届出書（PDF）</a></li><li><a href="files/kaigyo/aoiro-shinsei.pdf" target="_blank" rel="noopener noreferrer">所得税の青色申告承認申請書（PDF）</a></li><li><a href="files/kaigyo/invoice-touroku.pdf" target="_blank" rel="noopener noreferrer">適格請求書発行事業者の登録申請書（PDF）</a></li><li><a href="files/kaigyo/jigyozei-kaishi.pdf" target="_blank" rel="noopener noreferrer">事業開始等申告書（個人事業税・東京都）（PDF）</a></li></ul>'
+              ] },
+              { title: "2. エントリーフォームの入力", list: [
+                '社用GoogleアカウントでGoogleフォームを回答する（<a href="https://forms.gle/5ZKcbS5H4twihi3QA" target="_blank" rel="noopener noreferrer">エントリーフォームを開く</a>）'
+              ], images: [{ src: "images/joining/entry-form-qr.png", caption: "エントリーフォームのQRコード", alt: "エントリーフォームのQRコード", maxWidth: 200 }] },
+              { title: "3. 従業員データマスタへ自動反映", list: ["Googleフォームの回答が従業員データマスタへ自動反映されたことを確認する", "不足や誤りがないか確認する", "自動反映できない部分は手動で入力する"] },
+              { title: "4. 各スプレッドシートの自動反映", list: ["対象：勤務予定表、就業報告、プロフィールシート、MTG議事録", "上記4つが各スプレッドシートへ自動反映されたことを確認する"] },
+              { title: "5. 契約管理", list: ["freeeサインで業務委託契約書を送付し、締結を確認する"] },
+              { title: "6. 案件選定", list: ["取引先へプロフィールシートを提出する", "能力に応じた案件を提案する", "案件元と面談を行う", "案件を確定する"] },
+              { title: "7. 稼働準備", list: ["Slackに招待する", "稼働詳細を案内する", "勤務予定表・就業報告の運用を確認する"] },
+              { title: "8. 稼働開始", list: ["毎月のシフトを勤務予定表に入力し自動反映する", "週次ミーティングの日時を決める", "支払通知書の確認をする"] },
+              { title: "営業フェーズの終了条件", body: "業務委託契約の締結と案件の確定が済み、Slackへの招待と稼働詳細の案内を終えて、本人の稼働開始を確認した時点で営業フェーズを完了します。" }
             ]
           }] },
           { id: "haken", title: "派遣案件", desc: "雇用元は別の会社（例：docomo案件）", sections: [{
@@ -1793,7 +1802,7 @@ function showCategory(phaseId, categoryId, subId) {
         if (sub.images) {
           html += `<div class="manual-shots">`;
           sub.images.forEach(img => {
-            html += `<figure class="manual-shot"><a href="${escapeHtml(img.src)}" target="_blank" rel="noopener noreferrer"><img src="${escapeHtml(img.src)}" alt="${escapeHtml(img.alt || img.caption || "")}" loading="lazy"></a>${img.caption ? `<figcaption>${escapeHtml(img.caption)}</figcaption>` : ""}</figure>`;
+            html += `<figure class="manual-shot"${img.maxWidth ? ` style="max-width:${Number(img.maxWidth)}px"` : ""}><a href="${escapeHtml(img.src)}" target="_blank" rel="noopener noreferrer"><img src="${escapeHtml(img.src)}" alt="${escapeHtml(img.alt || img.caption || "")}" loading="lazy"></a>${img.caption ? `<figcaption>${escapeHtml(img.caption)}</figcaption>` : ""}</figure>`;
           });
           html += `</div>`;
         }
