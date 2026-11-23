@@ -216,6 +216,18 @@
   }
   .breadcrumb button:hover { text-decoration: underline; color: var(--rp-alpenglow); }
   .breadcrumb .sep { margin: 0 6px; color: var(--rp-text-mute); }
+  /* 前のページに戻るボタン（全ページ共通） */
+  .page-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+  .page-top .breadcrumb { margin-bottom: 0; }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;
+    padding: 6px 14px 6px 10px; font-size: 13px; font-family: inherit;
+    color: var(--rp-rock-light); background: var(--rp-snow-pure);
+    border: 1px solid var(--rp-border); border-radius: 999px; cursor: pointer;
+    transition: all 0.15s;
+  }
+  .back-btn:hover { border-color: var(--rp-alpenglow); color: var(--rp-alpenglow); }
+  .back-btn .arrow { font-size: 15px; line-height: 1; }
 
   .content h2 {
     font-size: 26px; color: var(--rp-rock); margin-bottom: 8px;
@@ -439,7 +451,7 @@
   /* 印刷スタイル */
   @media print {
     .header, .sidebar, .sidebar-backdrop,
-    .meta-actions, .memo-area, .breadcrumb {
+    .meta-actions, .memo-area, .breadcrumb, .back-btn {
       display: none !important;
     }
     .layout { display: block; }
@@ -1664,7 +1676,7 @@ function showPhase(phaseId) {
 
   let html = "";
   // M6:フェーズ概要にもブレッドクラム
-  html += `<div class="breadcrumb"><span>${escapeHtml(phase.title)}</span></div>`;
+  html += `<div class="page-top">${backButtonHtml(phaseId === "overview" ? null : "overview")}<div class="breadcrumb"><span>${escapeHtml(phase.title)}</span></div></div>`;
 
   if (phase.isOverview) {
     html += `<h2>${escapeHtml(phase.title)}</h2><div class="meta-actions"></div>`;
@@ -1728,7 +1740,7 @@ function showPhase(phaseId) {
 function showAccessDenied() {
   const area = document.getElementById("contentArea");
   area.innerHTML = `
-    <div class="breadcrumb"><span>アクセスエラー</span></div>
+    <div class="page-top">${backButtonHtml("overview")}<div class="breadcrumb"><span>アクセスエラー</span></div></div>
     <h2>アクセス権限がありません</h2>
     <p>このフェーズ/カテゴリは、現在のアカウントではアクセスできません。</p>
     <p>管理者にお問い合わせください。</p>
@@ -1763,12 +1775,13 @@ function showCategory(phaseId, categoryId, subId) {
   const favs = getFavorites();
   const isFav = favs.includes(favKey);
 
-  let html = `<div class="breadcrumb">
+  const backTo = subPage ? `${phaseId}/${categoryId}` : phaseId;
+  let html = `<div class="page-top">${backButtonHtml(backTo)}<div class="breadcrumb">
     <button data-action="goto-phase" data-phase="${escapeHtml(phaseId)}">${escapeHtml(phase.title)}</button>
     <span class="sep">＞</span>` + (subPage
       ? `<button data-action="goto-cat" data-phase="${escapeHtml(phaseId)}" data-cat="${escapeHtml(categoryId)}">${escapeHtml(category.title)}</button><span class="sep">＞</span>${escapeHtml(subPage.title)}`
       : escapeHtml(category.title)) + `
-  </div>`;
+  </div></div>`;
   html += `<h2>${escapeHtml(page.title)}</h2>`;
   html += `<div class="meta-actions">
     <button data-action="toggle-fav" data-fav="${escapeHtml(favKey)}" class="${isFav ? "active" : ""}" aria-pressed="${isFav}">
@@ -1881,6 +1894,8 @@ function bindContentDelegation() {
       saveMemo();
     } else if (action === "copy-link") {
       copyLink(btn.dataset.phase, btn.dataset.cat, btn.dataset.sub);
+    } else if (action === "go-back") {
+      goBack(btn.dataset.fallback);
     }
   });
 }
@@ -1900,11 +1915,38 @@ function copyLink(phaseId, categoryId, subId) {
 /* =============================================================
    URL ハッシュルーティング
    ============================================================= */
+/* ページを移るたびに履歴を積む（ブラウザの戻る・画面の「戻る」ボタンで1つ前へ戻れる） */
+let replaceNextHash = false;
 function updateHash(phaseId, categoryId, subId) {
   const hash = categoryId ? `#${phaseId}/${categoryId}` + (subId ? `/${subId}` : "") : `#${phaseId}`;
-  if (location.hash !== hash) {
-    history.replaceState(null, "", hash);
+  if (location.hash === hash) return;
+  const depth = (history.state && history.state.rpDepth) || 0;
+  if (replaceNextHash || !location.hash) {
+    history.replaceState({ rpDepth: depth }, "", hash);
+  } else {
+    history.pushState({ rpDepth: depth + 1 }, "", hash);
   }
+}
+/* 戻るボタン。fallback は履歴が無いとき（リンクを直接開いた等）に移る1つ上の階層 */
+function backButtonHtml(fallback) {
+  const hasHistory = history.state && history.state.rpDepth > 0;
+  if (!hasHistory && !fallback) return "";
+  return `<button type="button" class="back-btn" data-action="go-back" data-fallback="${escapeHtml(fallback || "")}" aria-label="前のページに戻る"><span class="arrow" aria-hidden="true">←</span>戻る</button>`;
+}
+function goBack(fallback) {
+  if (history.state && history.state.rpDepth > 0) {
+    history.back();
+    return;
+  }
+  if (!fallback) return;
+  const [p, c] = fallback.split("/");
+  replaceNextHash = true;
+  try {
+    if (c) showCategory(p, c); else showPhase(p);
+  } finally {
+    replaceNextHash = false;
+  }
+  window.scrollTo(0, 0);
 }
 function routeFromHash() {
   const h = location.hash.replace(/^#/, "");
