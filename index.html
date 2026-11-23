@@ -732,19 +732,17 @@ const data = [
             subsections: [
               { title: "概要", body: "本人の雇用元がRPとは別の会社になる案件の入社フローです。従業員データマスタと各スプレッドシートは自動反映を基本とし、案件選定・稼働準備などの手動作業を明確に分けます。" },
               { title: "全体フロー", body: "入社準備 → エントリーフォームの入力 → 従業員データマスタへ自動反映 → 各スプレッドシートの自動反映 → 案件選定 → 稼働準備 → 稼働開始" },
-              { title: "使用ツール", body: '<span class="tool-tag">Googleアカウント</span><span class="tool-tag">Googleフォーム</span><span class="tool-tag">Googleスプレッドシート</span><span class="tool-tag">Slack</span><span class="tool-tag">Gmail</span><span class="tool-tag">Google Meet</span>' },
-              { title: "1. 入社準備", list: [
-                '社用Googleアカウントを作成する（<a href="https://www.google.com/intl/ja/account/about/" target="_blank" rel="noopener noreferrer">Googleアカウントの作成ページ</a>）'
-              ] },
+              { title: "使用ツール", body: '<span class="tool-tag">Googleアカウント</span><span class="tool-tag">Googleフォーム</span><span class="tool-tag">Googleスプレッドシート</span><span class="tool-tag">グループLINE</span><span class="tool-tag">Gmail</span><span class="tool-tag">Google Meet</span>' },
+              { title: "1. 入社準備", list: ["グループLINEを作成する"] },
               { title: "2. エントリーフォームの入力", list: [
-                '社用GoogleアカウントでGoogleフォームを回答する（<a href="https://forms.gle/5ZKcbS5H4twihi3QA" target="_blank" rel="noopener noreferrer">エントリーフォームを開く</a>）'
+                '本人のメールアドレス（RPの社用アドレスではないもの）でGoogleフォームを回答する（<a href="https://forms.gle/5ZKcbS5H4twihi3QA" target="_blank" rel="noopener noreferrer">エントリーフォームを開く</a>）'
               ], images: [{ src: "images/joining/entry-form-qr.png", caption: "エントリーフォームのQRコード", alt: "エントリーフォームのQRコード", maxWidth: 200 }] },
               { title: "3. 従業員データマスタへ自動反映", list: ["Googleフォームの回答が従業員データマスタへ自動反映されたことを確認する", "不足や誤りがないか確認する", "自動反映できない部分は手動で入力する"] },
               { title: "4. 各スプレッドシートの自動反映", list: ["対象：勤務予定表、就業報告、プロフィールシート、MTG議事録", "上記4つが各スプレッドシートへ自動反映されたことを確認する"] },
               { title: "5. 案件選定", list: ["取引先へプロフィールシートを提出する", "能力に応じた案件を提案する", "案件元と面談を行う", "案件を確定する"] },
-              { title: "6. 稼働準備", list: ["Slackに招待する", "稼働詳細を案内する", "勤務予定表・就業報告の運用を確認する"] },
+              { title: "6. 稼働準備", list: ['社用Googleアカウントを作成する（<a href="https://www.google.com/intl/ja/account/about/" target="_blank" rel="noopener noreferrer">Googleアカウントの作成ページ</a>）', "稼働詳細を案内する", "勤務予定表・就業報告の運用を確認する"] },
               { title: "7. 稼働開始", list: ["毎月のシフトを勤務予定表に入力し自動反映する", "週次ミーティングの日時を決める"] },
-              { title: "営業フェーズの終了条件", body: "案件の確定が済み、Slackへの招待と稼働詳細の案内を終えて、本人の稼働開始を確認した時点で営業フェーズを完了します。" }
+              { title: "営業フェーズの終了条件", body: "案件の確定が済み、社用Googleアカウントの作成と稼働詳細の案内を終えて、本人の稼働開始を確認した時点で営業フェーズを完了します。" }
             ]
           }] }
         ],
