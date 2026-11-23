@@ -363,35 +363,6 @@
     color: var(--rp-text-mute); font-style: italic;
   }
 
-  .memo-area {
-    margin-top: 32px; padding: 16px;
-    background: rgba(217,119,87,0.05);
-    border: 1px dashed var(--rp-alpenglow); border-radius: 6px;
-  }
-  .memo-area h4 {
-    color: var(--rp-alpenglow); margin-bottom: 8px; font-size: 14px;
-  }
-  .memo-area textarea {
-    width: 100%; min-height: 100px; padding: 10px;
-    border: 1px solid rgba(217,119,87,0.3); border-radius: 4px;
-    font-family: inherit; font-size: 13px; resize: vertical;
-    background: var(--rp-snow-pure);
-  }
-  .memo-area textarea:focus {
-    outline: none; border-color: var(--rp-alpenglow);
-  }
-  .memo-area button {
-    margin-top: 8px; padding: 6px 14px; background: var(--rp-alpenglow);
-    color: var(--rp-snow-pure); border: none; border-radius: 4px;
-    cursor: pointer; font-size: 12px; transition: background 0.15s;
-  }
-  .memo-area button:hover { background: var(--rp-alpenglow-soft); }
-  .memo-status {
-    display: inline-block; margin-left: 12px; font-size: 11px;
-    color: var(--rp-success); opacity: 0; transition: opacity 0.3s;
-  }
-  .memo-status.show { opacity: 1; }
-
   .modal-overlay {
     display: none; position: fixed; inset: 0;
     background: rgba(0,0,0,0.5); z-index: 1000;
@@ -452,7 +423,7 @@
   /* 印刷スタイル */
   @media print {
     .header, .sidebar, .sidebar-backdrop,
-    .meta-actions, .memo-area, .breadcrumb, .back-btn {
+    .meta-actions, .breadcrumb, .back-btn {
       display: none !important;
     }
     .layout { display: block; }
@@ -1846,17 +1817,6 @@ function showCategory(phaseId, categoryId, subId) {
     html += `</ul></div>`;
   }
 
-  // メモエリア(B3: textareaの中身をエスケープ)
-  const memo = getMemo(favKey);
-  html += `<div class="memo-area">
-    <h4>📝 個人メモ(${escapeHtml(currentUser.name)})</h4>
-    <textarea id="memoInput" placeholder="このカテゴリについてのメモを入力…">${escapeHtml(memo)}</textarea>
-    <div>
-      <button data-action="save-memo">メモを保存</button>
-      <span class="memo-status" id="memoStatus">✓ 保存しました</span>
-    </div>
-  </div>`;
-
   const area = document.getElementById("contentArea");
   area.innerHTML = html;
 
@@ -1886,8 +1846,6 @@ function bindContentDelegation() {
       showCategory(btn.dataset.phase, btn.dataset.cat, btn.dataset.sub);
     } else if (action === "toggle-fav") {
       toggleFavorite(btn.dataset.fav);
-    } else if (action === "save-memo") {
-      saveMemo();
     } else if (action === "copy-link") {
       copyLink(btn.dataset.phase, btn.dataset.cat, btn.dataset.sub);
     } else if (action === "go-back") {
@@ -2031,32 +1989,6 @@ function toggleFavorite(favKey) {
   buildNav();
   const [phaseId, categoryId] = favKey.split("/");
   showCategory(phaseId, categoryId);
-}
-
-/* =============================================================
-   メモ(B2対策・キー安全化)
-   ============================================================= */
-function getMemo(favKey) {
-  if (!currentUser) return "";
-  try {
-    const key = `rp_memo_${safeKey(currentUser.id)}_${safeKey(favKey)}`;
-    return localStorage.getItem(key) || "";
-  } catch (e) { return ""; }
-}
-
-function saveMemo() {
-  const favKey = `${currentPhaseId}/${currentCategoryId}`;
-  const key = `rp_memo_${safeKey(currentUser.id)}_${safeKey(favKey)}`;
-  const text = document.getElementById("memoInput").value;
-  try {
-    localStorage.setItem(key, text);
-    const status = document.getElementById("memoStatus");
-    status.classList.add("show");
-    setTimeout(() => status.classList.remove("show"), 1500);
-  } catch (e) {
-    console.warn("memo save failed:", e);
-    alert("メモの保存に失敗しました(ストレージ容量不足の可能性)");
-  }
 }
 
 /* =============================================================
