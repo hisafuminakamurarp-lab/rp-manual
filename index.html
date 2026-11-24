@@ -1758,6 +1758,16 @@ function showCategory(phaseId, categoryId, subId) {
     <button data-action="copy-link" data-phase="${escapeHtml(phaseId)}" data-cat="${escapeHtml(categoryId)}" data-sub="${escapeHtml(subPage ? subPage.id : "")}">🔗 リンクをコピー</button>
   </div>`;
 
+  // カテゴリの中の項目(サブページ)をカードで表示（説明より先に出す）
+  if (!subPage && category.subPages && category.subPages.length > 0) {
+    html += `<div class="section-block"><h3>項目一覧</h3>`;
+    html += `<p>${category.subPages.length} の項目があります。各カードをクリックすると詳細を表示します。</p>`;
+    html += `<div class="category-grid">`;
+    category.subPages.forEach(sp => {
+      html += `<button type="button" class="category-card" data-action="goto-sub" data-phase="${escapeHtml(phaseId)}" data-cat="${escapeHtml(categoryId)}" data-sub="${escapeHtml(sp.id)}"><div class="name">${escapeHtml(sp.title)}</div><div class="desc">${escapeHtml(sp.desc || "")}</div></button>`;
+    });
+    html += `</div></div>`;
+  }
   page.sections.forEach((sec, secIdx) => {
     html += `<div class="section-block"><h3>${escapeHtml(sec.title)}</h3>`;
     if (sec.subsections) {
@@ -1783,16 +1793,6 @@ function showCategory(phaseId, categoryId, subId) {
     html += `</div>`;
   });
 
-  // カテゴリの中の項目(サブページ)をカードで表示
-  if (!subPage && category.subPages && category.subPages.length > 0) {
-    html += `<div class="section-block"><h3>項目一覧</h3>`;
-    html += `<p>${category.subPages.length} の項目があります。各カードをクリックすると詳細を表示します。</p>`;
-    html += `<div class="category-grid">`;
-    category.subPages.forEach(sp => {
-      html += `<button type="button" class="category-card" data-action="goto-sub" data-phase="${escapeHtml(phaseId)}" data-cat="${escapeHtml(categoryId)}" data-sub="${escapeHtml(sp.id)}"><div class="name">${escapeHtml(sp.title)}</div><div class="desc">${escapeHtml(sp.desc || "")}</div></button>`;
-    });
-    html += `</div></div>`;
-  }
   if (subPage) {
     html += `<div class="section-block"><button type="button" class="back-link" data-action="goto-cat" data-phase="${escapeHtml(phaseId)}" data-cat="${escapeHtml(categoryId)}">← ${escapeHtml(category.title)}の項目一覧へ戻る</button></div>`;
   }
