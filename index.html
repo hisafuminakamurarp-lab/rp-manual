@@ -747,7 +747,12 @@ const data = [
               { title: "営業フェーズの終了条件", body: "案件の確定が済み、社用Googleアカウントの作成と稼働詳細の案内を終えて、本人の稼働開始を確認した時点で営業フェーズを完了します。" }
             ]
           }] },
-          { id: "master", title: "従業員データマスタの自動化", desc: "エントリー後にフォルダ・就業報告などが自動で作られる仕組み（入社・退職）", sections: [
+          { id: "recruit", title: "採用管理", desc: "応募〜採用〜従業員データマスタの自動化（入社・退職）", sections: [
+          { title: "採用管理の概要", subsections: [
+          { title: "概要", body: "応募者情報・面談状況・採用可否を一元管理します。応募から内定、契約締結、入社初期設定までの進捗を追跡し、社内共有はSlack、応募者との連絡はグループLINEで行います。" },
+          { title: "主な業務", list: ["応募者対応(問い合わせ受付・書類確認)", "面談日程調整(グループLINE)", "面談実施(対面/オンライン)", "採用可否判断(社内会議で決定)", "契約書送付(freeeサイン)", "初期設定依頼(アカウント・デバイス)"] },
+          { title: "使用ツール", body: '<span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span><span class="tool-tag">freeeサイン</span>' }
+        ]},
           { title: "従業員データマスタの自動化", subsections: [
             { title: "概要", body: "入社・退職の情報は「従業員データマスタ」の「従業員データ」タブに集めます。ここを起点に、フォルダ・プロフィールシート・就業報告・勤務予定表が自動でそろいます。人がやるのは、エントリーフォームの案内と、管理者が入れる数項目だけです。" },
             { title: "大事な決まり", list: ["「エントリーフォームの回答」タブは記録用。手で直さない（直すのは「従業員データ」タブ）", "「従業員データ」の列は並べ替えてOK。ただし見出しの名前は変えない", "自動で作る処理は「無いときだけ作る」。何度動いても二重にはならず、既にあるフォルダ・タブには触らない"] },
@@ -1219,17 +1224,6 @@ const data = [
     responsibility: "人材の採用・育成・労務管理。採用から退職まで、給与・社保・評価・労務全般を担当。",
     categories: [
       {
-        id: "recruit", title: "採用管理", desc: "応募〜内定〜入社準備",
-        sections: [{ title: "採用管理の概要", subsections: [
-          { title: "概要", body: "応募者情報・面談状況・採用可否を一元管理します。応募から内定、契約締結、入社初期設定までの進捗を追跡し、社内共有はSlack、応募者との連絡はグループLINEで行います。" },
-          { title: "主な業務", list: ["応募者対応(問い合わせ受付・書類確認)", "面談日程調整(グループLINE)", "面談実施(対面/オンライン)", "採用可否判断(社内会議で決定)", "契約書送付(freeeサイン)", "初期設定依頼(アカウント・デバイス)"] },
-          { title: "使用ツール", body: '<span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span><span class="tool-tag">freeeサイン</span>' }
-        ]}],
-        crossLinks: [
-          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "account", categoryTitle: "アカウント管理", note: "入社時のアカウント発行依頼" }
-        ]
-      },
-      {
         id: "smarthr", title: "SmartHR", desc: "入社・退社の手続き・従業員情報・年末調整・給与明細・社会保険・勤怠",
         sections: [{ title: "SmartHRでやること", subsections: [
           { title: "概要", body: "入社・退社の手続き、従業員情報の管理、年末調整、給与明細の配布、社会保険の届出、勤怠管理は、SmartHRで行います。上の項目一覧から、やりたいことを選んでください。" },
@@ -1246,7 +1240,7 @@ const data = [
           { id: "taisha", title: "退社手続き", desc: "退職日の登録・資格喪失の手続き", sections: [{ title: "退社手続き", subsections: [
             { title: "概要", body: "退職する従業員の手続きをSmartHRで作成し、社会保険・雇用保険の資格喪失などの書類と電子申請を進めます。" },
             { title: "やること", list: ["① SmartHRのホームの手続きウィジェットで［退職］を押す", "② 対象の従業員と退職日を入力する", "③ 作られた手続きToDoを確認する", "④ 資格喪失届などの書類と電子申請を作成する"] },
-            { title: "社内でやること", list: ["従業員データマスタの「従業員データ」に退職年月日を入れる（入社フロー「従業員データマスタの自動化」を参照）", "アカウント停止・デバイス返却を依頼する（総務フェーズ）", "退職届の受領と、業務の引継ぎを確認する"] },
+            { title: "社内でやること", list: ["従業員データマスタの「従業員データ」に退職年月日を入れる（入社フロー「採用管理」の従業員データマスタの自動化を参照）", "アカウント停止・デバイス返却を依頼する（総務フェーズ）", "退職届の受領と、業務の引継ぎを確認する"] },
             { title: "公式ヘルプ（SmartHR）", body: "※管理者向けの記事は、SmartHRにログインすると読めます。", list: [SH('360026103514', '退職の手続きを作成する'), SH('360026107174', '退職を取り消す'), SH('1500002927742', '【一覧】「雇用保険 被保険者資格喪失届」の喪失原因の例'), SH('360026262133', '退職せず、社会保険・雇用保険の被保険者資格喪失届のみ作成する')] }
           ]}] },
           { id: "employee-info", title: "従業員情報の管理", desc: "住所・口座・家族などの登録と変更", sections: [{ title: "従業員情報の管理", subsections: [
@@ -1952,7 +1946,9 @@ function routeFromHash() {
 }
 /* 人事の旧カテゴリ → 今の場所 */
 const HR_LEGACY = {
-  onboard: { phase: "phase-sales", cat: "joining", sub: "master" },
+  onboard: { phase: "phase-sales", cat: "joining", sub: "recruit", secOffset: 1 },
+  recruit: { phase: "phase-sales", cat: "joining", sub: "recruit" },
+  "joining-master": { phase: "phase-sales", cat: "joining", sub: "recruit", secOffset: 1 },
   attendance: { phase: "phase-hr", cat: "smarthr", sub: "kintai" },
   payroll: { phase: "phase-hr", cat: "smarthr", sub: "kyuyo" },
   "social-insurance": { phase: "phase-hr", cat: "smarthr", sub: "shaho" }
@@ -1981,7 +1977,8 @@ function routeFromHashInner() {
     const lm = h.match(/^s-(.+)-(\d+-\d+)$/);
     if (lm && HR_LEGACY[lm[1]]) {
       const lg = HR_LEGACY[lm[1]];
-      return routeAnchor(`s-${lg.cat}${lg.sub ? "-" + lg.sub : ""}-${lm[2]}`);
+      const [si, ssi] = lm[2].split("-").map(Number);
+      return routeAnchor(`s-${lg.cat}${lg.sub ? "-" + lg.sub : ""}-${si + (lg.secOffset || 0)}-${ssi}`);
     }
     return routeAnchor(h);
   }
@@ -2041,7 +2038,7 @@ function routeFromHashParts(h) {
       return true;
     }
     /* SmartHRにまとめた人事の旧カテゴリ・入社フローへ移した入退職管理への旧リンク */
-    const legacyHr = HR_LEGACY[parts[1]];
+    const legacyHr = (parts[1] === "joining" && parts[2] === "master") ? HR_LEGACY["joining-master"] : HR_LEGACY[parts[1]];
     if (legacyHr) {
       showCategory(legacyHr.phase, legacyHr.cat, legacyHr.sub);
       return true;
