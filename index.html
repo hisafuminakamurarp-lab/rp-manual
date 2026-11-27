@@ -474,7 +474,7 @@
   <div class="layout">
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-search">
-        <input type="text" id="searchBox" placeholder="フェーズ・業務検索…" aria-label="検索">
+        <input type="text" id="searchBox" placeholder="業務検索…" aria-label="検索">
         <div class="shortcut-hint"><kbd id="kbdHint">Ctrl + K</kbd> で検索</div>
       </div>
       <ul class="nav-list" id="navList" role="navigation"></ul>
@@ -607,73 +607,9 @@ const SH = (id, title) => `<a href="https://support.smarthr.jp/ja/help/articles/
 
 const data = [
   {
-    id: "overview",
-    title: "0. 概要",
-    isOverview: true,
-    description: "本マニュアルの目的と全体像",
-    categories: [
-      {
-        id: "purpose",
-        title: "本マニュアルの目的と全体像",
-        desc: "目的・対象範囲・更新ルール・6フェーズの全体像",
-        sections: [
-          {
-            title: "本マニュアルについて",
-            subsections: [
-              {
-                title: "目的",
-                body: "本マニュアルは、株式会社ROCK PTARMIGANにおける業務フロー・運用ルール・管理体制を統一し、全メンバーが同じ基準で業務を実施できる状態を目的として作成しています。"
-              },
-              {
-                title: "構造の考え方",
-                body: "本マニュアルは以下の階層構造で設計されています:",
-                list: [
-                  "<strong>フェーズ(部門)</strong> ─ 営業/総務/経理/人事/法務/共通基盤",
-                  "<strong>業務カテゴリ</strong> ─ 各フェーズに紐づく業務単位",
-                  "<strong>運用フロー</strong> ─ 実際の進め方・ステップ",
-                  "<strong>使用ツール・ルール</strong> ─ 利用ツール・運用ルール・自動化"
-                ]
-              },
-              {
-                title: "対象範囲",
-                body: "全社員を対象とします。<br>※各フェーズに紐づく業務単位で共有内容が変わります。"
-              },
-              {
-                title: "更新ルール",
-                body: "本マニュアルは運用変更・ツール変更・組織変更が発生した時点で速やかに更新します。"
-              }
-            ]
-          },
-          {
-            title: "会社OS全体像（6つのフェーズ）",
-            subsections: [
-              {
-                title: "6つのフェーズ",
-                body: "ROCK PTARMIGANの業務は以下6フェーズで構成されます。各フェーズは独立した責任範囲を持ちながら、相互に連携します。",
-                list: [
-                  "<strong>1. 営業フェーズ</strong> ─ 人材を確保し、案件提案から入社まで進める",
-                  "<strong>2. 総務フェーズ</strong> ─ 業務を回す(アカウント・デバイス・発注)",
-                  "<strong>3. 経理フェーズ</strong> ─ 数字を管理する(請求・会計・決算・予実)",
-                  "<strong>4. 人事フェーズ</strong> ─ 人を支える(採用・労務・給与)",
-                  "<strong>5. 法務フェーズ</strong> ─ リスクを守る(契約管理・契約審査・コンプラ)",
-                  "<strong>6. 共通基盤</strong> ─ 全社で使用するツールを整理する"
-                ]
-              },
-              {
-                title: "業務連携の流れ",
-                body: "営業が人材を獲得し、案件提案から入社までを進行 → 法務が契約を締結 → 総務がアカウント・デバイスを用意 → 経理が請求・入金処理・会計 → 法務が契約リスクを継続監視。人事と共通基盤は全フェーズを横断的に支えます。"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-
-  {
     id: "phase-sales",
-    title: "1. 営業フェーズ",
-    description: "見込みメンバーを確保し、案件提案から入社までを進めるフェーズ",
+    title: "1. 営業",
+    description: "見込みメンバーを確保し、案件提案から入社までを進める",
     responsibility: "見込みメンバーの獲得と管理、案件提案、採用決定、エントリー登録、入社準備、契約（業務委託案件）または雇用元の会社への連携（派遣案件）、入社兼稼働開始の確認までを担当。",
     categories: [
       {
@@ -698,7 +634,7 @@ const data = [
           ]
         }],
         crossLinks: [
-          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "web", categoryTitle: "Web管理", note: "採用情報・紹介導線の整備と連動" }
+          { phase: "phase-office", phaseTitle: "総務", category: "web", categoryTitle: "Web管理", note: "採用情報・紹介導線の整備と連動" }
         ]
       },
       {
@@ -726,7 +662,7 @@ const data = [
               { title: "6. 案件選定", list: ["取引先へプロフィールシートを提出する", "能力に応じた案件を提案する", "案件元と面談を行う", "案件を確定する"] },
               { title: "7. 稼働準備", list: ["Slackに招待する", "稼働詳細を案内する", "勤務予定表・就業報告の運用を確認する"] },
               { title: "8. 稼働開始", list: ["毎月のシフトを勤務予定表に入力し自動反映する", "週次ミーティングの日時を決める", "支払通知書の確認をする"] },
-              { title: "営業フェーズの終了条件", body: "業務委託契約の締結と案件の確定が済み、Slackへの招待と稼働詳細の案内を終えて、本人の稼働開始を確認した時点で営業フェーズを完了します。" }
+              { title: "営業の終了条件", body: "業務委託契約の締結と案件の確定が済み、Slackへの招待と稼働詳細の案内を終えて、本人の稼働開始を確認した時点で営業の担当を完了します。" }
             ]
           }] },
           { id: "haken", title: "派遣案件", desc: "雇用元は別の会社（例：docomo案件）", sections: [{
@@ -744,7 +680,7 @@ const data = [
               { title: "5. 案件選定", list: ["取引先へプロフィールシートを提出する", "能力に応じた案件を提案する", "案件元と面談を行う", "案件を確定する"] },
               { title: "6. 稼働準備", list: ['社用Googleアカウントを作成する（<a href="https://www.google.com/intl/ja/account/about/" target="_blank" rel="noopener noreferrer">Googleアカウントの作成ページ</a>）', "稼働詳細を案内する", "勤務予定表・就業報告の運用を確認する"] },
               { title: "7. 稼働開始", list: ["毎月のシフトを勤務予定表に入力し自動反映する", "週次ミーティングの日時を決める"] },
-              { title: "営業フェーズの終了条件", body: "案件の確定が済み、社用Googleアカウントの作成と稼働詳細の案内を終えて、本人の稼働開始を確認した時点で営業フェーズを完了します。" }
+              { title: "営業の終了条件", body: "案件の確定が済み、社用Googleアカウントの作成と稼働詳細の案内を終えて、本人の稼働開始を確認した時点で営業の担当を完了します。" }
             ]
           }] },
           { id: "recruit", title: "採用管理", desc: "応募〜採用〜従業員データマスタの自動化（入社・退職）", sections: [
@@ -768,7 +704,7 @@ const data = [
           { title: "退職の流れ", subsections: [
             { title: "1. 管理者が退職年月日を入れる", body: "「従業員データ」の退職年月日に、最終出勤日を入れます。先に入れておいても、その日までは在職中のままです。" },
             { title: "2. 退職日を過ぎたら自動で進むこと", list: ["在籍状況が「退職」になり、勤務予定表・紹介者の候補から外れる", "【RP 従業員管理】フォルダを「【退職者】」フォルダへ移す", "就業報告の個人タブは退職月より後の月を非表示にし、毎晩の休日判定も止める", "紹介料の支給が残っていれば「【退職処理】」のメールで知らせる（続けるかどうかを判断）"] },
-            { title: "3. 人がやること", list: ["退職届の受領・業務の引継ぎ確認", "アカウント停止依頼（退職日）・デバイス返却（総務フェーズ）", "残っている紹介料の扱いを決める", "必要に応じて離職票・源泉徴収票の発行"] }
+            { title: "3. 人がやること", list: ["退職届の受領・業務の引継ぎ確認", "アカウント停止依頼（退職日）・デバイス返却（総務）", "残っている紹介料の扱いを決める", "必要に応じて離職票・源泉徴収票の発行"] }
           ]},
           { title: "定期的に自動で動くもの", subsections: [
             { title: "毎時", list: ["入社準備（フォルダ・プロフィール・就業報告の個人タブ）", "退職処理", "エントリーフォームの紹介者の候補を、在籍中の社員に合わせる"] },
@@ -779,8 +715,8 @@ const data = [
           ] }
         ],
         crossLinks: [
-          { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "contract", categoryTitle: "契約管理", note: "業務委託契約書の締結状況を連携する" },
-          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "account", categoryTitle: "アカウント管理", note: "入社時のアカウント発行を依頼する" }
+          { phase: "phase-legal", phaseTitle: "法務", category: "contract", categoryTitle: "契約管理", note: "業務委託契約書の締結状況を連携する" },
+          { phase: "phase-office", phaseTitle: "総務", category: "account", categoryTitle: "アカウント管理", note: "入社時のアカウント発行を依頼する" }
         ]
       }
     ]
@@ -788,8 +724,8 @@ const data = [
 
   {
     id: "phase-office",
-    title: "2. 総務フェーズ",
-    description: "アカウント・デバイス・発注・Webなど業務運用を支えるフェーズ",
+    title: "2. 総務",
+    description: "アカウント・デバイス・発注・Webなど業務運用を支える",
     responsibility: "営業の入社フローから必要情報を引き継ぎ、アカウント・デバイス管理、備品・サービスの発注、Web運用を担当。",
     categories: [
       {
@@ -805,7 +741,7 @@ const data = [
           ]
         }],
         crossLinks: [
-          { phase: "phase-hr", phaseTitle: "人事フェーズ", category: "smarthr", categoryTitle: "SmartHR", note: "入社・退社の手続き" }
+          { phase: "phase-hr", phaseTitle: "人事", category: "smarthr", categoryTitle: "SmartHR", note: "入社・退社の手続き" }
         ]
       },
       {
@@ -828,7 +764,7 @@ const data = [
           title: "発注依頼の概要",
           subsections: [
             { title: "概要", body: "備品購入・サービス契約・外注発注など、社内からの発注依頼を一元管理します。" },
-            { title: "運用フロー", list: ["Slackで発注依頼を共有", "管理者承認", "発注実行・支払処理", "経理フェーズへ仕訳連携"] }
+            { title: "運用フロー", list: ["Slackで発注依頼を共有", "管理者承認", "発注実行・支払処理", "経理へ仕訳連携"] }
           ]
         }]
       },
@@ -845,7 +781,7 @@ const data = [
           ]
         }],
         crossLinks: [
-          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "member", categoryTitle: "人材営業・管理", note: "採用情報・紹介導線の整備と連動" }
+          { phase: "phase-sales", phaseTitle: "営業", category: "member", categoryTitle: "人材営業・管理", note: "採用情報・紹介導線の整備と連動" }
         ]
       }
     ]
@@ -853,8 +789,8 @@ const data = [
 
   {
     id: "phase-accounting",
-    title: "3. 経理フェーズ",
-    description: "請求・決済・会計処理・決算・予実管理を行う数字管理フェーズ",
+    title: "3. 経理",
+    description: "請求・決済・会計処理・決算・予実管理を行う数字の管理",
     responsibility: "数字の管理。freee会計を中心に、日々の会計処理・請求・債権債務・経費精算・月次決算・年次決算を行い、決済・サブスクの管理、予実管理、旅費精算、税務対応までを担当。",
     categories: [
       {
@@ -1106,8 +1042,8 @@ const data = [
           ]}] }
         ],
         crossLinks: [
-          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "travel", categoryTitle: "旅費精算（出張旅費規程）", note: "出張の精算は旅費精算アプリで行い、会計CSVをfreee会計へ取り込む" },
-          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "tax", categoryTitle: "税務対応", note: "税理士との連携・税務調査対応はこちら" }
+          { phase: "phase-accounting", phaseTitle: "経理", category: "travel", categoryTitle: "旅費精算（出張旅費規程）", note: "出張の精算は旅費精算アプリで行い、会計CSVをfreee会計へ取り込む" },
+          { phase: "phase-accounting", phaseTitle: "経理", category: "tax", categoryTitle: "税務対応", note: "税理士との連携・税務調査対応はこちら" }
         ]
       },
       {
@@ -1203,8 +1139,8 @@ const data = [
           ] }
         ]}],
         crossLinks: [
-          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "freee", categoryTitle: "freee会計", note: "出張以外の立替経費（経費精算）はこちら" },
-          { phase: "phase-accounting", phaseTitle: "経理フェーズ", category: "tax", categoryTitle: "税務対応", note: "旅費規程・精算書は税務調査で提示する" }
+          { phase: "phase-accounting", phaseTitle: "経理", category: "freee", categoryTitle: "freee会計", note: "出張以外の立替経費（経費精算）はこちら" },
+          { phase: "phase-accounting", phaseTitle: "経理", category: "tax", categoryTitle: "税務対応", note: "旅費規程・精算書は税務調査で提示する" }
         ]
       },
       {
@@ -1219,8 +1155,8 @@ const data = [
 
   {
     id: "phase-hr",
-    title: "4. 人事フェーズ",
-    description: "採用から退職まで、人を支える人事労務フェーズ",
+    title: "4. 人事",
+    description: "採用から退職まで、人を支える人事労務",
     responsibility: "人材の採用・育成・労務管理。採用から退職まで、給与・社保・評価・労務全般を担当。",
     categories: [
       {
@@ -1232,7 +1168,7 @@ const data = [
         ]}],
         subPages: [
           { id: "nyusha", title: "入社手続き", desc: "従業員の登録・招待・資格取得の手続き", sections: [{ title: "入社手続き", subsections: [
-            { title: "概要", body: "入社する従業員をSmartHRに登録し、本人に情報を入力してもらったうえで、社会保険・雇用保険の資格取得などの手続きを進めます。エントリーから稼働開始までの社内の流れは、営業フェーズの「入社フロー」を見てください。" },
+            { title: "概要", body: "入社する従業員をSmartHRに登録し、本人に情報を入力してもらったうえで、社会保険・雇用保険の資格取得などの手続きを進めます。エントリーから稼働開始までの社内の流れは、営業の「入社フロー」を見てください。" },
             { title: "やること", list: ["① 従業員を追加し、招待を送る（メールアドレスのアカウント、または社員番号のアカウント）", "② 本人に、SmartHR上で必要な情報を入力・提出してもらう", "③ 提出された内容を確認し、入社の手続きを進める", "④ 資格取得届などの書類を作成し、電子申請する", "⑤ 手続きのステータスを確認し、完了まで見届ける"] },
             { title: "気をつけること", list: ["招待はテスト送信で事前に確認できる", "本人の入力が止まっている（「未着手」「メンバー対応中」のまま）ときは、本人に声をかける"] },
             { title: "公式ヘルプ（SmartHR）", body: "※管理者向けの記事は、SmartHRにログインすると読めます。", list: [SH('32e86069-41a4-4736-8776-4602043ed4a9', '入社手続きの進め方ガイド'), SH('505572c5-dbe4-4f29-8927-15264f2c60fa', '招待とは'), SH('360026265893', '【招待あり】入社手続きの前に、従業員本人に情報を入力してもらう'), SH('360026265873', '従業員から情報が提出されたあと、入社手続きを進める'), SH('900005113826', '入社手続きのステータスを確認する'), SH('284727f1-389b-4291-985c-6f83f318fdbd', 'Q. SmartHRで入社手続きを進めると、どの書類を作成できる？')] }
@@ -1240,7 +1176,7 @@ const data = [
           { id: "taisha", title: "退社手続き", desc: "退職日の登録・資格喪失の手続き", sections: [{ title: "退社手続き", subsections: [
             { title: "概要", body: "退職する従業員の手続きをSmartHRで作成し、社会保険・雇用保険の資格喪失などの書類と電子申請を進めます。" },
             { title: "やること", list: ["① SmartHRのホームの手続きウィジェットで［退職］を押す", "② 対象の従業員と退職日を入力する", "③ 作られた手続きToDoを確認する", "④ 資格喪失届などの書類と電子申請を作成する"] },
-            { title: "社内でやること", list: ["従業員データマスタの「従業員データ」に退職年月日を入れる（入社フロー「採用管理」の従業員データマスタの自動化を参照）", "アカウント停止・デバイス返却を依頼する（総務フェーズ）", "退職届の受領と、業務の引継ぎを確認する"] },
+            { title: "社内でやること", list: ["従業員データマスタの「従業員データ」に退職年月日を入れる（入社フロー「採用管理」の従業員データマスタの自動化を参照）", "アカウント停止・デバイス返却を依頼する（総務）", "退職届の受領と、業務の引継ぎを確認する"] },
             { title: "公式ヘルプ（SmartHR）", body: "※管理者向けの記事は、SmartHRにログインすると読めます。", list: [SH('360026103514', '退職の手続きを作成する'), SH('360026107174', '退職を取り消す'), SH('1500002927742', '【一覧】「雇用保険 被保険者資格喪失届」の喪失原因の例'), SH('360026262133', '退職せず、社会保険・雇用保険の被保険者資格喪失届のみ作成する')] }
           ]}] },
           { id: "employee-info", title: "従業員情報の管理", desc: "住所・口座・家族などの登録と変更", sections: [{ title: "従業員情報の管理", subsections: [
@@ -1274,9 +1210,9 @@ const data = [
           ]}] }
         ],
         crossLinks: [
-          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "joining", categoryTitle: "入社フロー", note: "エントリーから稼働開始までの社内の流れ" },
-          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "account", categoryTitle: "アカウント管理", note: "入社・退職時のアカウント発行・停止" },
-          { phase: "phase-office", phaseTitle: "総務フェーズ", category: "device", categoryTitle: "デバイス管理", note: "貸与・返却" }
+          { phase: "phase-sales", phaseTitle: "営業", category: "joining", categoryTitle: "入社フロー", note: "エントリーから稼働開始までの社内の流れ" },
+          { phase: "phase-office", phaseTitle: "総務", category: "account", categoryTitle: "アカウント管理", note: "入社・退職時のアカウント発行・停止" },
+          { phase: "phase-office", phaseTitle: "総務", category: "device", categoryTitle: "デバイス管理", note: "貸与・返却" }
         ]
       },
       {
@@ -1289,11 +1225,11 @@ const data = [
       {
         id: "labor", title: "労務対応", desc: "労務相談・トラブル対応",
         sections: [{ title: "労務対応の概要", subsections: [
-          { title: "概要", body: "従業員からの労務相談・労務トラブル・ハラスメント対応を担当。重大案件は法務フェーズと連携。" },
+          { title: "概要", body: "従業員からの労務相談・労務トラブル・ハラスメント対応を担当。重大案件は法務と連携。" },
           { title: "対応領域", list: ["労務相談窓口", "ハラスメント対応", "就業規則の運用", "労働基準法対応"] }
         ]}],
         crossLinks: [
-          { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "compliance", categoryTitle: "コンプライアンス", note: "重大案件は法務連携" }
+          { phase: "phase-legal", phaseTitle: "法務", category: "compliance", categoryTitle: "コンプライアンス", note: "重大案件は法務連携" }
         ]
       }
     ]
@@ -1301,8 +1237,8 @@ const data = [
 
   {
     id: "phase-legal",
-    title: "5. 法務フェーズ",
-    description: "リーガルチェック・契約管理・コンプライアンス・契約リスクを守るフェーズ",
+    title: "5. 法務",
+    description: "リーガルチェック・契約管理・コンプライアンス・契約リスクを守る",
     responsibility: "法的リスクの管理。契約書の法的審査、契約の締結（電子契約）と台帳管理、コンプライアンス、契約リスクの継続管理を担当。",
     categories: [
       {
@@ -1312,7 +1248,7 @@ const data = [
           { title: "チェック項目", list: ["契約条項の妥当性", "リスク条項の有無", "個人情報保護法対応", "知的財産権の取り扱い", "解約条項・損害賠償条項"] }
         ]}],
         crossLinks: [
-          { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "contract", categoryTitle: "契約管理", note: "契約締結前審査" }
+          { phase: "phase-legal", phaseTitle: "法務", category: "contract", categoryTitle: "契約管理", note: "契約締結前審査" }
         ]
       },
       {
@@ -1323,13 +1259,13 @@ const data = [
           title: "契約管理の概要",
           subsections: [
             { title: "概要", body: "契約内容・締結状況・更新状況を管理します。全契約は電子契約(freeeサイン)を原則とし、原本を所定の保管場所に保存して契約台帳で管理します。" },
-            { title: "主な業務", list: ["契約書作成(所定のテンプレートを使用)", "契約内容確認(法務フェーズと連携)", "電子契約送付(freeeサイン)", "締結確認・契約台帳への登録", "契約更新管理(更新3ヶ月前にリマインド)"] },
+            { title: "主な業務", list: ["契約書作成(所定のテンプレートを使用)", "契約内容確認(法務と連携)", "電子契約送付(freeeサイン)", "締結確認・契約台帳への登録", "契約更新管理(更新3ヶ月前にリマインド)"] },
             { title: "使用ツール", body: '<span class="tool-tag">freeeサイン</span><span class="tool-tag">Slack(社内)</span><span class="tool-tag">グループLINE(社外)</span>' }
           ]
         }],
         crossLinks: [
-          { phase: "phase-sales", phaseTitle: "営業フェーズ", category: "joining", categoryTitle: "入社フロー", note: "入社条件確定後に契約管理へ連携する" },
-          { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "contract-risk", categoryTitle: "契約リスク管理", note: "契約条項の法的妥当性確認" }
+          { phase: "phase-sales", phaseTitle: "営業", category: "joining", categoryTitle: "入社フロー", note: "入社条件確定後に契約管理へ連携する" },
+          { phase: "phase-legal", phaseTitle: "法務", category: "contract-risk", categoryTitle: "契約リスク管理", note: "契約条項の法的妥当性確認" }
         ]
       },
       {
@@ -1358,13 +1294,13 @@ const data = [
           { title: "監視項目", list: ["契約違反の早期検知", "更新時の条件見直し", "紛争予防対応", "契約終了時の手続き"] }
         ]}],
         crossLinks: [
-          { phase: "phase-legal", phaseTitle: "法務フェーズ", category: "contract", categoryTitle: "契約管理", note: "契約台帳の継続監視" }
+          { phase: "phase-legal", phaseTitle: "法務", category: "contract", categoryTitle: "契約管理", note: "契約台帳の継続監視" }
         ]
       },
       {
         id: "audit", title: "監査対応", desc: "内部監査・外部監査対応",
         sections: [{ title: "監査対応の概要", subsections: [
-          { title: "概要", body: "内部監査・外部監査の対応窓口。経理フェーズと連携。" },
+          { title: "概要", body: "内部監査・外部監査の対応窓口。経理と連携。" },
           { title: "主な業務", list: ["監査スケジュール調整", "監査資料準備", "監査対応の窓口", "監査指摘事項の改善管理"] }
         ]}]
       }
@@ -1374,7 +1310,7 @@ const data = [
   {
     id: "phase-common",
     title: "6. 共通基盤",
-    description: "全フェーズで利用する共通ツールを整理するフェーズ",
+    description: "全業務で利用する共通ツールを整理する",
     responsibility: "社内外のコミュニケーション、業務管理、AI活用に使用するツールを一覧で管理する。",
     categories: [
       {
@@ -1491,18 +1427,24 @@ function doLogout() {
   btn.textContent = "ログイン";
 }
 
+/* 最初に開く画面（見られる最初のフェーズ） */
+function showHome() {
+  const first = data.find(d => canAccessPhase(d.id)) || data[0];
+  if (first) showPhase(first.id);
+}
+
 function showApp() {
   document.getElementById("loginScreen").style.display = "none";
   document.getElementById("mainApp").style.display = "block";
   document.getElementById("userLabel").textContent = currentUser.name + " 様";
 
   loadExpandedState();
-  if (expandedPhases.size === 0) expandedPhases.add("overview");
+  if (expandedPhases.size === 0 && data.length > 0) expandedPhases.add(data[0].id);
 
   buildNav();
   // URL hash があればそれを優先
   if (!routeFromHash()) {
-    if (data.length > 0) showPhase(data[0].id);
+    showHome();
   }
 }
 
@@ -1667,7 +1609,7 @@ function showPhase(phaseId) {
 
   let html = "";
   // M6:フェーズ概要にもブレッドクラム
-  html += `<div class="page-top">${backButtonHtml(phaseId === "overview" ? null : "overview")}<div class="breadcrumb"><span>${escapeHtml(phase.title)}</span></div></div>`;
+  html += `<div class="page-top">${backButtonHtml(null)}<div class="breadcrumb"><span>${escapeHtml(phase.title)}</span></div></div>`;
 
   if (phase.isOverview) {
     html += `<h2>${escapeHtml(phase.title)}</h2><div class="meta-actions"></div>`;
@@ -1692,7 +1634,7 @@ function showPhase(phaseId) {
   } else {
     html += `<h2>${escapeHtml(phase.title)}</h2><div class="meta-actions"></div>`;
     html += `<div class="phase-overview">
-      <h3>フェーズ概要</h3>
+      <h3>概要</h3>
       <p>${escapeHtml(phase.description || "")}</p>
       <div class="responsibility">
         <strong>📌 責任範囲</strong>
@@ -1702,7 +1644,7 @@ function showPhase(phaseId) {
 
     const visibleCats = phase.categories.filter(c => canAccessCategory(phase.id, c.id));
     html += `<div class="section-block"><h3>業務カテゴリ一覧</h3>`;
-    html += `<p>このフェーズには ${visibleCats.length} の業務カテゴリがあります。各カードをクリックすると詳細を表示します。</p>`;
+    html += `<p>${visibleCats.length} の業務カテゴリがあります。各カードをクリックすると詳細を表示します。</p>`;
     html += `<div class="category-grid" id="catGrid"></div></div>`;
   }
 
@@ -1731,9 +1673,9 @@ function showPhase(phaseId) {
 function showAccessDenied() {
   const area = document.getElementById("contentArea");
   area.innerHTML = `
-    <div class="page-top">${backButtonHtml("overview")}<div class="breadcrumb"><span>アクセスエラー</span></div></div>
+    <div class="page-top">${backButtonHtml(null)}<div class="breadcrumb"><span>アクセスエラー</span></div></div>
     <h2>アクセス権限がありません</h2>
-    <p>このフェーズ/カテゴリは、現在のアカウントではアクセスできません。</p>
+    <p>このページは、現在のアカウントではアクセスできません。</p>
     <p>管理者にお問い合わせください。</p>
   `;
 }
@@ -1823,7 +1765,7 @@ function showCategory(phaseId, categoryId, subId) {
   // クロスリンク(B1: アクセス制御で表示制御)
   if (!subPage && category.crossLinks && category.crossLinks.length > 0) {
     html += `<div class="cross-links">
-      <h4>🔗 関連する他フェーズの業務</h4>
+      <h4>🔗 関連する他の業務</h4>
       <ul>`;
     category.crossLinks.forEach(link => {
       const accessible = canAccessCategory(link.phase, link.category);
@@ -2000,14 +1942,15 @@ function routeAnchor(h) {
 }
 function routeFromHashParts(h) {
   const parts = h.split("/");
+  /* 概要フェーズは廃止。旧リンクは最初の画面へ */
+  if (parts[0] === "overview") {
+    showHome();
+    return true;
+  }
   if (parts.length === 1) {
     const phase = data.find(d => d.id === parts[0]);
     if (phase) { showPhase(parts[0]); return true; }
   } else if (parts.length >= 2) {
-    if (parts[0] === "overview" && (parts[1] === "manual-update" || parts[1] === "company-os")) {
-      showPhase("overview");
-      return true;
-    }
     if (parts[0] === "phase-sales") {
       /* 案件営業・管理(project)は廃止。旧リンクは営業フェーズのトップへ */
       if (parts[1] === "project" || parts[1] === "customer") {
